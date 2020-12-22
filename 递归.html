@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const aa = [
+        /* {
+        id: 1,
+        userId: 208,
+        upstreamLevelId: 0,
+        levelName: "此账户",
+        enableAlarm: true,
+        enableCascadingAlarm: false,
+        path: "此账户",
+        onlineBoxCount: 0,
+        offlineBoxCount: 0,
+        connectedInterconnectionCount: 0,
+        disconnectedInterconnectionCount: 0,
+        boxCount: 0,
+        subUserList: [
+        6
+        ],
+        children: null
+        }, */
+        {
+            id: 15,
+            userId: 208,
+            upstreamLevelId: 1,
+            levelName: "上海",
+            enableAlarm: false,
+            enableCascadingAlarm: false,
+            path: "此账户/上海",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        },
+        {
+            id: 16,
+            userId: 208,
+            upstreamLevelId: 15,
+            levelName: "华东",
+            enableAlarm: true,
+            enableCascadingAlarm: false,
+            path: "此账户/上海/华东",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        },
+        {
+            id: 19,
+            userId: 208,
+            upstreamLevelId: 1,
+            levelName: "北京",
+            enableAlarm: false,
+            enableCascadingAlarm: false,
+            path: "此账户/北京",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        },
+        {
+            id: 25,
+            userId: 208,
+            upstreamLevelId: 19,
+            levelName: "B区",
+            enableAlarm: false,
+            enableCascadingAlarm: false,
+            path: "此账户/北京/B区",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        },
+        {
+            id: 29,
+            userId: 208,
+            upstreamLevelId: 19,
+            levelName: "D区",
+            enableAlarm: false,
+            enableCascadingAlarm: false,
+            path: "此账户/北京/D区",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        },
+        {
+            id: 36,
+            userId: 208,
+            upstreamLevelId: 19,
+            levelName: "E区",
+            enableAlarm: false,
+            enableCascadingAlarm: false,
+            path: "此账户/北京/E区",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        },
+        {
+            id: 39,
+            userId: 208,
+            upstreamLevelId: 1,
+            levelName: "浙江",
+            enableAlarm: true,
+            enableCascadingAlarm: false,
+            path: "此账户/浙江",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        },
+        {
+            id: 40,
+            userId: 208,
+            upstreamLevelId: 39,
+            levelName: "west",
+            enableAlarm: false,
+            enableCascadingAlarm: false,
+            path: "此账户/浙江/west",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        },
+        {
+            id: 77,
+            userId: 208,
+            upstreamLevelId: 40,
+            levelName: "west",
+            enableAlarm: false,
+            enableCascadingAlarm: false,
+            path: "此账户/浙江/west/aa",
+            onlineBoxCount: 0,
+            offlineBoxCount: 0,
+            connectedInterconnectionCount: 0,
+            disconnectedInterconnectionCount: 0,
+            boxCount: 0,
+            subUserList: [],
+            children: null
+        }
+    ];
+
+    /*   function bb (){
+          aa.map(item=>{
+              item[`title`] = item.name;
+              item.key = item.id;
+              item.children = [];
+              aa.map(i=>{
+                  i[`title`] = i.name;
+                  i.key = i.id;
+                  if(item.id == i.upstreamLevelId){
+                      item.children.push(i);
+                  }
+              })
+          })
+          console.log(aa);
+      }
+      bb(); */
+
+
+    /* let a =10;
+    function cc (){
+        alert(a);
+        var a = 2;
+    }
+    cc();
+    alert(a) */
+
+
+
+
+
+
+
+
+
+    var arr = [
+        {
+            "id": 14,
+            "upstreamGroupId": 5,
+            "name": "vv",
+            "reloadStatus": 1,
+            "openfalconId": 70
+        },
+        {
+            "id": 18,
+            "upstreamGroupId": 5,
+            "name": "ss",
+            "reloadStatus": 1,
+            "openfalconId": 74
+        },
+        {
+            "id": 5,
+            "upstreamGroupId": 1,
+            "name": "华东",
+            "reloadStatus": 1,
+            "openfalconId": 61
+        },
+        {
+            "id": 12,
+            "upstreamGroupId": 5,
+            "name": "上海",
+            "reloadStatus": 1,
+            "openfalconId": 68
+        },
+        {
+            "id": 13,
+            "upstreamGroupId": 5,
+            "name": "浙江",
+            "reloadStatus": 1,
+            "openfalconId": 69
+        },
+        {
+            "id": 21,
+            "upstreamGroupId": 13,
+            "name": "23435",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 24,
+            "upstreamGroupId": 1,
+            "name": "华西",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 25,
+            "upstreamGroupId": 24,
+            "name": "华西1",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 26,
+            "upstreamGroupId": 24,
+            "name": "华西2",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        }
+    ];
+    
+    function getTreeDate(arr) {
+        function getTree(treeArr, treeItem) {
+            for (let i = 0; i < arr2.length; i++) {
+                if (arr2[i].upstreamGroupId == treeItem.key) {
+                    let tmp = { "title": arr2[i].name, "key": arr2[i].id, "children": [] };
+                    treeItem.children.push(tmp)
+                    getTree(treeArr, tmp);
+                    let tmp1 = arr2.splice(i, 1);
+                    i--;
+                    //console.log(tmp1);
+                }
+            }
+        }
+        const queue = [...arr];
+        var arr2 = queue.sort((o1, o2) => { return o1.id - o2.id });  // 浅拷贝一份，不然在做队列操作时会影响原数据
+        //var arr2 = arr.sort((o1, o2) => { return o1.id - o2.id });
+        //console.log(arr2)
+        var treeArr = [];
+        while (arr2.length > 0) {
+            let frist = arr2.shift();
+            let tmp = { "title": frist.name, "key": frist.id, "children": [] };
+            treeArr.push(tmp);
+            getTree(treeArr, tmp);
+        }
+        return treeArr;
+    }
+
+
+
+    // while(arr2.length>0){
+    //     let tmp = arr2.shift()
+    //     terrArr.forEach((obj)=>{
+    //         if(tmp.upstreamLevelId = obj.id ){
+    //             if(!obj.children){
+    //                 obj.children = [];
+    //             }
+    //             obj.children.push({"title":tmp.name,"key":tmp.id,"children":[]});
+    //         }
+    //     });
+
+    // }
+
+
+
+   const a= getTreeDate(arr);
+     console.log(a)
+    console.log(arr);
+</script>
+
+</html>

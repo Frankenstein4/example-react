@@ -1,0 +1,20 @@
+.container {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #333744;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+.inputCount {
+  margin: 15px 0;
+  height: 40px;
+  line-height: 40px;
+}

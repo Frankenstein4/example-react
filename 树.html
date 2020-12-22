@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    const treeData = [
+        {
+            title: 'parent 1',
+            key: '0-0',
+            children: [
+                {
+                    title: 'parent 1-0',
+                    key: '0-0-0',
+                    children: [
+                        {
+                            title: 'leaf',
+                            key: '0-0-0-0',
+                        },
+                        {
+                            title: 'leaf',
+                            key: '0-0-0-1',
+                        },
+                        {
+                            title: 'leaf',
+                            key: '0-0-0-2',
+                        },
+                    ],
+                },
+                {
+                    title: 'parent 1-1',
+                    key: '0-0-1',
+                    children: [
+                        {
+                            title: 'leaf',
+                            key: '0-0-1-0',
+                        },
+                    ],
+                }
+            ],
+        },
+        {
+            title: 'parent 1-1',
+            key: '0-0-1',
+            children: [
+                {
+                    title: 'leaf',
+                    key: '0-0-1-0',
+                },
+            ],
+        },
+    ];
+
+
+    var arr = [
+        {
+            "id": 14,
+            "upstreamGroupId": 5,
+            "name": "vv",
+            "reloadStatus": 1,
+            "openfalconId": 70
+        },
+        {
+            "id": 18,
+            "upstreamGroupId": 5,
+            "name": "ss",
+            "reloadStatus": 1,
+            "openfalconId": 74
+        },
+        {
+            "id": 5,
+            "upstreamGroupId": 1,//upstreamGroupId等于某一个id的时候  此项就是他的children  比如这里 上海就是华东底下的children
+            "name": "华东",      // 请将arr改造成上面树的数据形式，name为title，key为id
+            "reloadStatus": 1,
+            "openfalconId": 61
+        },
+        {
+            "id": 12,
+            "upstreamGroupId": 5,
+            "name": "上海",
+            "reloadStatus": 1,
+            "openfalconId": 68
+        },
+        {
+            "id": 13,
+            "upstreamGroupId": 5,
+            "name": "浙江",
+            "reloadStatus": 1,
+            "openfalconId": 69
+        },
+        {
+            "id": 21,
+            "upstreamGroupId": 13,
+            "name": "23435",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 24,
+            "upstreamGroupId": 1,
+            "name": "华西",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 25,
+            "upstreamGroupId": 24,
+            "name": "华西1",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 26,
+            "upstreamGroupId": 24,
+            "name": "华西2",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        }
+    ];
+</script>
+
+</html>

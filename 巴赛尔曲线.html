@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        .bg{
+            width: 100%;
+            height: 100vh;
+            background-image: url(./timg.jfif);
+            background-size: cover;
+            position: relative;
+        }
+
+        .canvas1{
+            height: 500px;
+            width: 500px;
+            margin: auto;
+            position: absolute;
+            left: 500px;
+            top: 316px;
+        }
+        .canvas2{
+            height: 500px;
+            width: 500px;
+            margin: auto;
+            position: absolute;
+            left: 331px;
+            top: 410px;
+            transform: rotate(32deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="canvas1">
+    <canvas id="canvas" width="500" height="500"></canvas>
+      </div>
+      <div class="canvas2">
+        <canvas id="canvas1" width="500" height="500"></canvas>
+          </div>
+  </div>
+    <script>
+        var oQuadraticCurveTo = document.getElementById("canvas");
+        var oContext = oQuadraticCurveTo.getContext("2d");
+        var x=2;
+ 
+    function drawLine(){
+        oContext.beginPath();
+        oContext.moveTo(0,0);                       //起始点（x,y）
+        oContext.quadraticCurveTo(100, 0, 200, 200);    //创建二次贝塞尔曲线
+        oContext.lineWidth = 2;
+        oContext.strokeStyle = "tomato";
+        oContext.stroke();
+        oContext.closePath();
+    }
+    function drawPoint(x,y){
+        oContext.beginPath();
+        oContext.arc(x, y, 3, 0, 2 * Math.PI, false);
+        oContext.fillStyle="red";
+        oContext.fill();
+         
+        oContext.stroke();
+        oContext.closePath();
+ 
+    }
+ 
+    //画移动的线
+    function drawMivie(){
+         
+        y=Math.pow(x,2)*0.005;
+       
+             
+        if(x > 198){
+            x=0;
+        }else{
+        //防止首位相连<br>　　　　　//清楚之前的图，重新绘制
+        oContext.clearRect(0, 0, 500, 500);
+        oContext.closePath();
+        drawStatic(oContext);
+        //
+        x=x+1;  
+        y=Math.pow(x,2)*0.005;
+        //画圆球
+        oContext.beginPath();
+        oContext.strokeStyle = "#fff";
+        oContext.arc(x,y,5,0,2* Math.PI,false);
+        oContext.fillStyle="#fff";
+        oContext.fill();
+        oContext.stroke();
+        oContext.closePath();
+        }
+    }
+    //画静态元素,红线和两端
+    function drawStatic(){
+        drawLine();
+        drawPoint(0,0);
+        drawPoint(200,200);
+    }
+    
+    setInterval(function(){
+            drawMivie(oContext);
+        },20);
+
+
+
+
+
+
+
+
+
+        var oQuadraticCurveTo = document.getElementById("canvas1");
+        var oContext1 = oQuadraticCurveTo.getContext("2d");
+        var x=2;
+ 
+    function drawLine1(){
+        oContext1.beginPath();
+        oContext1.moveTo(0,0);                       //起始点（x,y）
+        oContext1.quadraticCurveTo(100, 0, 200, 200);    //创建二次贝塞尔曲线
+        oContext1.lineWidth = 2;
+        oContext1.strokeStyle = "tomato";
+        oContext1.stroke();
+        oContext1.closePath();
+    }
+    function drawPoint1(x,y){
+        oContext1.beginPath();
+        oContext1.arc(x, y, 3, 0, 2 * Math.PI, false);
+        oContext1.fillStyle="red";
+        oContext1.fill();
+         
+        oContext1.stroke();
+        oContext1.closePath();
+ 
+    }
+ 
+    //画移动的线
+    function drawMivie1(){
+         
+        y=Math.pow(x,2)*0.005;
+       
+             
+        if(x > 198){
+            x=0;
+        }else{
+        //防止首位相连<br>　　　　　//清楚之前的图，重新绘制
+        oContext1.clearRect(0, 0, 500, 500);
+        oContext1.closePath();
+        drawStatic1(oContext);
+        //
+        x=x+1;  
+        y=Math.pow(x,2)*0.005;
+        //画圆球
+        oContext1.beginPath();
+        oContext1.strokeStyle = "#fff";
+        oContext1.arc(x,y,5,0,2* Math.PI,false);
+        oContext1.fillStyle="#fff";
+        oContext1.fill();
+        oContext1.stroke();
+        oContext1.closePath();
+        }
+    }
+    //画静态元素,红线和两端
+    function drawStatic1(){
+        drawLine1();
+        drawPoint1(0,0);
+        drawPoint1(200,200);
+    }
+    
+    setInterval(function(){
+            drawMivie1(oContext);
+        },20);
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

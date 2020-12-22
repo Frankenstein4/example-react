@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var arr = `--AgentMetrics
+agent.alive
+
+--CpuMetrics
+cp213
+cp1321
+cpadsaf
+cpddsa
+cpsfaf
+cpfad
+cssfa
+cpads
+cpsa
+cdas
+cpads
+
+--DeviceMetrics
+df.byads
+df.bytsad
+df.bytas
+df.bytes.used.percent
+df.inoa
+df.statistics.total
+df.statistics.used
+df.statistics.used.percent
+df.inodes.used.percent
+df.inodes.total
+df.inodes.used
+df.inodes.free
+
+--DiskIOMetrics
+disk.io.avgqu-sz
+disk.io.avgrq_sz
+disk.io.await
+disk.io.ios_in_progress
+disk.io.msec_read
+disk.io.msec_total
+disk.io.msec_weighted_total
+disk.io.msec_write
+disk.io.read_bytes
+disk.io.read_merged
+disk.io.read_requests
+disk.io.read_sectors
+disk.io.svctm
+disk.io.util
+disk.io.write_bytes
+disk.io.write_merged
+disk.io.write_requests
+disk.io.write_sectors
+
+--KernelMetrics
+kernel.files.allocated
+kernel.files.left
+kernel.maxfiles
+kernel.maxproc
+
+--LoadAvgMetrics
+load.15min
+load.1min
+load.5min
+
+--MemMetrics
+mem.memfree.percent
+mem.swapfree.percent
+mem.swapused.percent
+mem.memused.percent
+mem.memtotal
+mem.memused
+mem.memfree
+mem.swaptotal
+mem.swapused
+mem.swapfree
+
+--NetMetrics
+net.if.in.bits
+net.if.in.bytes
+net.if.in.compressed
+net.if.in.dropped
+net.if.in.errors
+net.if.in.fifo.errs
+net.if.in.frame.errs
+net.if.in.multicast
+net.if.in.packets
+net.if.in.percent
+net.if.out.bits
+net.if.out.bytes
+net.if.out.carrier.errs
+net.if.out.collisions
+net.if.out.compressed
+net.if.out.dropped
+net.if.out.errors
+net.if.out.fifo.errs
+net.if.out.packets
+net.if.out.percent
+net.if.speed.bits
+net.if.total.bits
+net.if.total.bytes
+net.if.total.dropped
+net.if.total.errors
+net.if.total.packets
+
+--UdpMetrics
+sn4124
+s21421
+snm2312
+sn234
+snm213423
+snm432
+sn24124
+
+--SocketStatSummaryMetrics
+ss.wer
+rew
+se2ew
+swrw
+swre
+ss.timewait
+
+--NetstatMetrics
+TcpErew
+Tcewre
+TcpExt.ListenDrops
+TcpEfweeeeee
+Tcewes
+TcpEefwe
+TcpExwqew
+Tcpww
+TcpEwrw
+TcpEyytuu
+TcpExddvff
+TcpE222224
+TcpEwrq
+TcpExt.TCPLostRetransmit
+TcpExt.TCPMemoryPressures
+TcpExt.TCPMinTTLDrop
+TcpExt.TCPPrequeueDropped
+TcpExt.TCPSchedulerFailed
+TcpExt.TCPSpuriousRTOs
+TcpExt.TCPTimeouts
+TcpExt.TCPTSReorder
+TcpExt.TW`
+    var map = new Map();
+    let tmpKey;
+    arr.split("\n").forEach((str) => {
+        if (str.length > 0) {
+            if (str.indexOf("--") != -1) {
+                tmpKey = str.substring(2);
+                map.set(tmpKey, new Array());
+            } else {
+                let arr = map.get(tmpKey);
+                //console.log(map.get(tmpKey));
+                arr.push(str);
+            }
+        }
+    });
+
+    console.log(map);
+
+    var treeDataTemp = [];
+    const trr = [...map];
+    console.log(trr)
+    function getTreeData() {
+        for (let i = 0; i < trr.length; i++) {
+            let node = {
+                title: trr[i][0],
+                key: 'p-' + trr[i][0],
+                children: []
+            };
+            if (trr[i][1].length > 0) {
+                trr[i][1].forEach((item, index) => {
+                    node.children.push({
+                        title: item,
+                        key: item,
+                    });
+                });
+            }
+            treeDataTemp.push(node);
+
+        }
+    }
+    getTreeData();
+    console.log(treeDataTemp);
+    sessionStorage.setItem('sz', JSON.stringify(treeDataTemp))
+</script>
+
+</html>

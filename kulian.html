@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+    margin: 0;
+    height: 0;
+}
+.d1{
+   width: 100%;
+   height: 100vh;
+   background: url(./src/assets/kl/bg.png) center center no-repeat;
+   background-size: cover; 
+   overflow: hidden;
+}
+
+.header{
+    width: 96%;
+    margin: auto;
+    height: 100px;
+    background: url(./src/assets/kl/header.png)  center center no-repeat;
+    background-size: cover;
+    margin-top: 20px;
+    display: flex;
+}
+.h1{
+    flex: 1;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+}
+.h2{
+    flex: 1;
+    height: 40px;
+    color: #00EDFE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+.h3{
+    flex: 1;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24px;
+}
+
+.container{
+    width: 1650px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    min-height: 500px;
+}
+.c1{
+    flex: 1;
+    height: 500px;
+    background: greenyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c1content{
+    width: 415px;
+    height: 486px;
+    background: url(./src/assets/kl/lf1.png);
+}
+.gj{
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 33px;
+    margin-bottom: 13px;
+    color: #00EDFE;
+}
+
+/* .list{
+    width: 340px;
+    height: 300px;
+    margin: auto;
+    margin-top: 60px;
+    background:  #00EDFE;;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+.list_ul{
+    width: 340px;
+    height: 370px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin: auto;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.list_li{
+    width: 351px;
+    height: 63px;
+    margin-bottom: 13px;
+    background: url(./src/assets/kl/li.png);
+}
+
+.jt{
+    width: 86px;
+    height: 72px;
+    background: url(./src/assets/kl/jt.png);
+}
+
+.c2{
+    flex: 1;
+    height: 600px;
+    background: greenyellow;
+    position: relative;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.c3{
+    flex: 1;
+    height: 500px;
+    background: greenyellow;
+}
+
+
+
+
+.footer{
+    width: 1650px;
+    height: 203px;
+    margin: auto;
+    background: url(./src/assets/kl/footer.png);
+    background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------中间圆圈-------------------------- */
+
+
+.wrap{
+    width: 500px;
+    height: 500px;
+    position: relative;
+}
+
+
+.circular path {
+            fill: none;
+        }
+
+        .circular {
+            /* width: 30em;
+            height: 30em; */
+            width: 500px;
+            height: 500px;
+        }
+
+        .circular svg {
+            display: block;
+            overflow: visible;
+        }
+
+
+        .circular svg {
+            display: block;
+            overflow: visible;
+            color: red;
+            font-size: 12px;
+        }
+
+        /* .bgWrap {
+            margin: 0;
+        } */
+
+        .circleImg {
+            width: 500px;
+            height: 500px;
+            background: url(./src/assets/kl/yq.png);
+            background-size:cover;
+            border-radius: 50%;
+        }
+
+        .circular {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            left: 50px;
+            top: 50px;
+
+        }
+
+        .circular2 {
+            transform: rotate(120deg);
+        }
+
+        .circular3 {
+            transform: rotate(240deg);
+        }
+
+        .bgWrap {
+            width: 500px;
+            height: 500px;
+            margin: 0;
+            /* animation:mymove 8s linear infinite; */
+        }
+
+        @keyframes mymove {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .center{
+            position: absolute;
+            left: 150px;
+            width: 200px;
+            top: 200px;
+            text-align: center;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            color: #000;
+            z-index: 99;
+        }
+
+
+.svg{
+    height: 400px;
+    width: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<body>
+    <div class="d1">
+
+        <div class="header">
+            <div class="h1">
+                <div>2020年9月7日</div>
+                <div>星期三</div>
+            </div>
+            <div class="h2">
+                <p>酷联告警数据展示平台</p>
+            </div>
+            <div class="h3">
+                <div>14:32:25</div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="c1">
+                <div class="c1content">
+                    <div class="gj">
+                        告警
+                    </div>
+                    <div class="list">
+                        <ul class="list_ul">
+                            <li class="list_li"></li>
+                            <li class="list_li"></li>
+                            <li class="list_li"></li>
+                            <li class="list_li"></li>
+                            <li class="list_li"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="jt"></div>
+            </div>
+            <div class="c2">
+
+
+
+
+
+
+                <div class="wrap">
+
+                    <div class="bgWrap">
+                        <!-- <img class="circleImg" src="./2.png" alt=""> -->
+                        <div class="circleImg"></div>
+                        <div class="circular circular1"> <svg viewBox="0 0 80 80" class="svg">
+                                <path d="M 0,40 a 40,40 0 1,1 0,1 z" id="circle" /> <text>
+                                    <textPath xlink:href="#circle" font-size="5" fill="#fff">热风告警数据显示</textPath>
+                                </text> </svg> </div>
+                        <div class="circular circular2"> <svg viewBox="0 0 80 80" class="svg">
+                                <path d="M 0,40 a 40,40 0 1,1 0,1 z" id="circle" /> <text>
+                                    <textPath xlink:href="#circle" font-size="5" fill="#fff"> 缸子是笨蛋 </textPath>
+                                </text> </svg> </div>
+                        <div class="circular circular3"> <svg viewBox="0 0 80 80" class="svg">
+                                <path d="M 0,40 a 40,340 0 1,1 0,1 z" id="circle" /> <text>
+                                    <textPath xlink:href="#circle" font-size="5" fill="#fff"> 哈哈哈哈哈 </textPath>
+                                </text> </svg> </div>
+                    </div>
+                    <div class="center">
+                        <div class="title">我是标题文本</div>
+                        <div class="title">我是标题文本</div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="c1">
+                <div class="jt" style="visibility: hidden;"></div>
+                <div class="c1content">
+                    <div class="gj">
+                        告警
+                    </div>
+                    <div class="list">
+                        <ul class="list_ul">
+                            <li class="list_li"></li>
+                            <li class="list_li"></li>
+                            <li class="list_li"></li>
+                            <li class="list_li"></li>
+                            <li class="list_li"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const aa = {
+        "linux": [{
+                "data": "2020-08-06",
+                "value": 10
+            },
+            {
+                "data": "2020-08-07",
+                "value": 14
+            },
+            {
+                "data": "2020-08-08",
+                "value": 14
+            },
+            {
+                "data": "2020-08-09",
+                "value": 14
+            },
+            {
+                "data": "2020-08-10",
+                "value": 14
+            },
+            {
+                "data": "2020-08-11",
+                "value": 14
+            },
+            {
+                "data": "2020-08-12",
+                "value": 14
+            }
+        ],
+        "windows": [{
+                "data": "2020-08-06",
+                "value": 10
+            },
+            {
+                "data": "2020-08-07",
+                "value": 14
+            },
+            {
+                "data": "2020-08-08",
+                "value": 14
+            },
+            {
+                "data": "2020-08-09",
+                "value": 14
+            },
+            {
+                "data": "2020-08-11",
+                "value": 14
+            },
+        ],
+        "box": [{
+                "data": "2020-08-06",
+                "value": 10
+            },
+            {
+                "data": "2020-08-07",
+                "value": 14
+            },
+            {
+                "data": "2020-08-08",
+                "value": 14
+            },
+            {
+                "data": "2020-08-11",
+                "value": 14
+            },
+            {
+                "data": "2020-08-12",
+                "value": 14
+            }
+        ],
+        "other": [{
+                "data": "2020-08-09",
+                "value": 14
+            },
+            {
+                "data": "2020-08-10",
+                "value": 14
+            },
+            {
+                "data": "2020-08-11",
+                "value": 14
+            },
+            {
+                "data": "2020-08-12",
+                "value": 14
+            }
+        ],
+    }
+    var arr = [aa.linux, aa.windows, aa.box, aa.other]
+    function findLongestArr(arr) {
+        let max = Math.max(...arr.map(i => i.length))
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            const ele = arr[i];
+            if (ele.length === max) {
+                newArr.push(ele)
+            }
+        }
+        return newArr;
+    }
+    const longArr = findLongestArr(arr)[0];
+    for (const key in aa) {
+        if (aa.hasOwnProperty(key)) {
+           for (let j = 0; j < longArr.length; j++) {
+              if ((aa[key][j]&&(aa[key][j].data!=longArr[j].data)) || !aa[key][j]) {
+                aa[key].splice(j,0,{ data: longArr[j].data,value: 0})
+              }
+           }
+        }
+    }
+    console.log(aa)
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+}
+div {
+    width: 100px;
+    height: 63px; /* 必须 */
+    overflow: hidden;/* 必须 */
+    margin: 50px auto;
+    border: 1px solid red;
+    text-align: center;
+}
+ul {
+    list-style: none;
+}
+</style>
+<body>
+    <div id="review_box">
+            <ul id="comment1">
+                <li>第一条</li>
+                <li>第二条</li>
+                <li>第三条</li>
+                <li>第四条</li>
+                <li>第五条</li>
+                <li>第六条</li>
+            </ul>
+            <ul id="comment2"></ul>
+        </div>
+</body>
+<script>
+    window.onload = roll(50);
+
+function roll(t) {
+    var ul1 = document.getElementById("comment1");
+    var ul2 = document.getElementById("comment2");
+    var ulbox = document.getElementById("review_box");
+    ul2.innerHTML = ul1.innerHTML;
+    ulbox.scrollTop = 0; // 开始无滚动时设为0
+    var timer = setInterval(rollStart, t); // 设置定时器，参数t用在这为间隔时间（单位毫秒），参数t越小，滚动速度越快
+    // 鼠标移入div时暂停滚动
+    ulbox.onmouseover = function () {
+        clearInterval(timer);
+    }
+    // 鼠标移出div后继续滚动
+    ulbox.onmouseout = function () {
+        timer = setInterval(rollStart, t);
+    }
+}
+
+// 开始滚动函数
+function rollStart() {
+    // 上面声明的DOM对象为局部对象需要再次声明
+    var ul1 = document.getElementById("comment1");
+    var ul2 = document.getElementById("comment2");
+    var ulbox = document.getElementById("review_box");
+    // 正常滚动不断给scrollTop的值+1,当滚动高度大于列表内容高度时恢复为0
+    if (ulbox.scrollTop >= ul1.scrollHeight) {
+        ulbox.scrollTop = 0;
+    } else {
+        ulbox.scrollTop++;
+    }
+}
+</script>
+</html>

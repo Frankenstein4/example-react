@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .article {
+    width: 400px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background-color: bisque;
+}
+
+.article .flag {
+    position: absolute;    /*绝对定位*/
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    width: 74px;
+    background-color: #FF5722;
+    color: #fff;
+}
+
+.article .flag-left {
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    left: -18px;
+    top: 9px;
+}
+.article .flag-right {
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    right: -18px;
+    top: 9px;
+}
+.d{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+
+}
+.d1{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    height: 50px;
+
+}
+    </style>
+</head>
+<body>
+    <div class="article">
+        <div class="flag flag-left">推荐真美丽</div>
+        <div class="d">
+            <div class="d1">
+                <div>平均</div>
+            </div>
+            <div class="d1">
+                <div>最大</div>
+                <div>最小</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

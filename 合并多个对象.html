@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        合并多个对象，现有多个对象，且对象的key值不定，要实现将多个对象合并成一个对象，相同key值的转为数组。
+    </p>
+    <p>
+        var obj1=[
+        {
+            a:'1',
+            b:'2',
+            c:'3'
+        },
+        {
+            a:'11',
+            b:'22',
+            c:'3'
+        },
+        {
+            a:'99',
+            name:'张三'
+        }
+    ]
+    返回
+     obj2={
+        a:['1','11','99'],
+         b:['2','22'],
+         c:['3'],
+         name:'张三'
+     }
+    </p>
+</body>
+<script>
+    var obj1=[
+    {
+        a:'1',
+        b:'2',
+        c:'3'
+    },
+    {
+        a:'11',
+        b:'22',
+        c:'3'
+    },
+    {
+        a:'99',
+        name:'张三'
+    }
+]
+//返回
+// obj2={
+//     a:['1','11'],
+//     b:['2','22'],
+//     c:['3']
+// }
+function fn(){
+let  obj2={}
+let keyArr=[]
+obj1.forEach(e=>{
+    for(let key in e){
+        if(keyArr.indexOf(key)<0){
+            keyArr.push(key)
+        }
+    }
+})
+console.log(keyArr)
+for(let i of keyArr){
+    obj2[i]=[]
+}
+obj1.forEach(e=>{
+    for(let key in e){
+        if(obj2[key].indexOf(e[key])<0){
+            obj2[key].push(e[key])
+        }
+
+    }
+})
+console.log(obj2)
+return obj2
+};
+fn()
+</script>
+</html>

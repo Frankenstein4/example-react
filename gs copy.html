@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+<canvas id="canvas" width="1000" height	="1000" style="background:#000">
+	您的浏览器不支持canvas标签
+</canvas>
+<script>
+	var canvas=document.getElementById('canvas');
+	var cxt=canvas.getContext('2d');		
+	
+	var time=0;	//声明一个时间参数(1:1天)
+	function draw(){				
+		cxt.clearRect(0,0,1000,1000); //清除画布(清除之前的内容 重新画)
+		//画轨道,设置笔触颜色
+		cxt.strokeStyle="#8D1C21";
+		cxt.beginPath();
+		cxt.arc(500,500,100,0,Math.PI*360,false);
+		cxt.closePath();
+		cxt.stroke();
+		
+	//画太阳
+		cxt.beginPath();
+		cxt.arc(500,500,20,0,360,false);
+		cxt.closePath();				
+		var sunColor=cxt.createRadialGradient(500,500,0,500,500,20);//(内圆心x,内圆形y,内半径,外圆心x,外圆心y,外半径);
+		sunColor.addColorStop(0,"#f00");
+		sunColor.addColorStop(1,"#f90");
+		cxt.fillStyle=sunColor;		//设置填充颜色(渐变色)
+		cxt.fill();
+		
+	//画地球
+		cxt.save();				
+		cxt.translate(500,500);		//设置一下异次元空间的0，0点
+		//cxt.rotate(90*Math.PI/190);					
+		cxt.rotate(time*360/365*Math.PI/190);//地球公转一周需要365天，time=1天 一天转360/365度
+	
+	//画出地球
+		cxt.beginPath();
+		cxt.arc(0,-100,10,0,360,false);
+		cxt.closePath();
+		var earthColor=cxt.createRadialGradient(0,-100,0,0,-100,10);
+		earthColor.addColorStop(0,'#78B1E8');
+		earthColor.addColorStop(1,'#050C12');
+		cxt.fillStyle=earthColor;
+		cxt.fill();
+		cxt.restore();
+		
+		time+=1; //每画一次图像，时间参数加1
+	}
+	
+	//使地球动起来
+	setInterval(draw,10);
+</script>
+</body>
+</html>

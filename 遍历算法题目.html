@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 某用户所在的部门id
+const departmentsId = [10,4,5,5,2,0];
+// 部门模拟数据
+const departmentTree = [
+  {
+    name: "技术部",
+    id: 0,
+    children: [
+      {
+        id: 1,
+        name: "前端",
+        children: [
+          {
+            id: 4,
+            name: "前端一组",
+            children: [],
+          },
+          {
+            id: 5,
+            name: "前端二组",
+            children: [
+              {
+                id: 9,
+                name: "前端-移动端一组",
+                children: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: "UI",
+        children: [
+          {
+            id: 6,
+            name: "UI一组",
+            children: [{ id: 10, name: "视觉设计", children: [] }],
+          },
+        ],
+      },
+      {
+        id: 3,
+        name: "后端",
+        children: [
+          {
+            id: 7,
+            name: "后端一组",
+            children: [],
+          },
+          {
+            id: 8,
+            name: "后端二组",
+            children: [],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+
+
+const getDeptNameFromTreeDepts = (treeDepartments, departmentsId) => {
+  const departmentNames = [];
+  // 浅拷贝一份，不然在做队列操作时会影响原数据
+  const queue = [...treeDepartments];
+  while (queue.length > 0) {
+    // 每次从对了头部取一个用于做对比
+    const department = queue.shift();
+    
+    // 判断当前节点的部门uuid在不在departmentUuid数组中，在的话就是我们想要找的部门，并提取name属性
+    if (departmentsId.includes(department.id)) {
+      departmentNames.push(department.name);
+    }
+    // 将当前部门的部门的子部门加到队列尾部
+    department.children && queue.push(...department.children);
+    console.log('============department',department)
+  }
+  return departmentNames.length > 0 ? departmentNames.join("; ") : "";
+};
+
+const name = getDeptNameFromTreeDepts(departmentTree, departmentsId);
+console.log(name);// UI; 前端二组
+console.log(departmentTree)
+
+
+
+
+
+
+/* function test(departmentTree,departmentsId){
+  let arr = [];
+  function getDept(data,deep){
+    data.forEach(o => {
+      departmentsId.includes(o.id) ? arr.push({deep:deep,name:o.name}) : '';
+      o.children != undefined ? getDept(o.children,++deep) : ''
+    });
+  }
+  getDept(departmentTree,0);
+  //return arr.sort((o1,o2)=>{return o1.deep -o2.deep});
+  arr = arr.sort((o1,o2)=>{return o1.deep -o2.deep});
+  let str = '';
+  arr.map(item=>{
+    str+=item.name+' ';
+  })
+  return str
+} */
+
+
+function test(departmentTree, departmentsId) {
+    let arr = [];
+    function getDept(data, deep) {
+        data.forEach((o) => {
+            let tmp = deep + 1;
+            departmentsId.includes(o.id) ? arr.push({ deep: deep, name: o.name }) : "";
+            o.children != undefined ? getDept(o.children, tmp) : "";
+        });
+    };
+    getDept(departmentTree, 0);
+    //return arr.sort((o1, o2) => { return o1.deep - o2.deep });
+    arr = arr.sort((o1,o2)=>{return o1.deep -o2.deep});
+  let str = '';
+  arr.map(item=>{
+    str+=item.name+' ';
+  })
+  return str
+}
+
+const aa = test(departmentTree, departmentsId);
+console.log(aa)
+
+
+
+
+
+
+
+
+//一行代码进行对象数组去重
+/* let arr = [{name:1},{name:2},{name:3},{name:4},{name:3},{name:2},{name:1}];
+let arr2 = arr.reduce((m,o)=>{m.set(o.name,o);return m;},new Map());
+console.log(arr2); */
+
+const unit = (arr)=>{
+    return arr.reduce((m,o)=>{m.set(o.name,o);return m;},new Map());
+}
+let arr = [{name:1},{name:2},{name:3},{name:4},{name:3},{name:2},{name:1}];
+console.log(unit(arr))
+</script>
+</html>

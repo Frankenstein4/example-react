@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = `--AgentMetrics
+agent.alive
+
+--CpuMetrics
+cpu.busy
+cpu.guest
+cpu.idle
+cpu.iowait
+cpu.irq
+cpu.nice
+cpu.softirq
+cpu.steal
+cpu.switches
+cpu.system
+cpu.user
+
+--DeviceMetrics
+df.bytes.free.percent
+df.bytes.total
+df.bytes.used
+df.bytes.free
+df.bytes.used.percent
+df.inodes.free.percent
+df.statistics.total
+df.statistics.used
+df.statistics.used.percent
+df.inodes.used.percent
+df.inodes.total
+df.inodes.used
+df.inodes.free
+
+--DiskIOMetrics
+disk.io.avgqu-sz
+disk.io.avgrq_sz
+disk.io.await
+disk.io.ios_in_progress
+disk.io.msec_read
+disk.io.msec_total
+disk.io.msec_weighted_total
+disk.io.msec_write
+disk.io.read_bytes
+disk.io.read_merged
+disk.io.read_requests
+disk.io.read_sectors
+disk.io.svctm
+disk.io.util
+disk.io.write_bytes
+disk.io.write_merged
+disk.io.write_requests
+disk.io.write_sectors
+
+--KernelMetrics
+kernel.files.allocated
+kernel.files.left
+kernel.maxfiles
+kernel.maxproc
+
+--LoadAvgMetrics
+load.15min
+load.1min
+load.5min
+
+--MemMetrics
+mem.memfree.percent
+mem.swapfree.percent
+mem.swapused.percent
+mem.memused.percent
+mem.memtotal
+mem.memused
+mem.memfree
+mem.swaptotal
+mem.swapused
+mem.swapfree
+
+--NetMetrics
+net.if.in.bits
+net.if.in.bytes
+net.if.in.compressed
+net.if.in.dropped
+net.if.in.errors
+net.if.in.fifo.errs
+net.if.in.frame.errs
+net.if.in.multicast
+net.if.in.packets
+net.if.in.percent
+net.if.out.bits
+net.if.out.bytes
+net.if.out.carrier.errs
+net.if.out.collisions
+net.if.out.compressed
+net.if.out.dropped
+net.if.out.errors
+net.if.out.fifo.errs
+net.if.out.packets
+net.if.out.percent
+net.if.speed.bits
+net.if.total.bits
+net.if.total.bytes
+net.if.total.dropped
+net.if.total.errors
+net.if.total.packets
+
+--UdpMetrics
+snmp.Udp.InCsumErrors
+snmp.Udp.InDatagrams
+snmp.Udp.InErrors
+snmp.Udp.NoPorts
+snmp.Udp.OutDatagrams
+snmp.Udp.RcvbufErrors
+snmp.Udp.SndbufErrors
+
+--SocketStatSummaryMetrics
+ss.closed
+ss.estab
+ss.orphaned
+ss.slabinfo.timewait
+ss.synrecv
+ss.timewait
+
+--NetstatMetrics
+TcpExt.ArpFilter
+TcpExt.DelayedACKLocked
+TcpExt.ListenDrops
+TcpExt.ListenOverflows
+TcpExt.LockDroppedIcmps
+TcpExt.PruneCalled
+TcpExt.TCPAbortFailed
+TcpExt.TCPAbortOnMemory
+TcpExt.TCPAbortOnTimeout
+TcpExt.TCPBacklogDrop
+TcpExt.TCPDSACKUndo
+TcpExt.TCPFastRetrans
+TcpExt.TCPLossFailures
+TcpExt.TCPLostRetransmit
+TcpExt.TCPMemoryPressures
+TcpExt.TCPMinTTLDrop
+TcpExt.TCPPrequeueDropped
+TcpExt.TCPSchedulerFailed
+TcpExt.TCPSpuriousRTOs
+TcpExt.TCPTimeouts
+TcpExt.TCPTSReorder
+TcpExt.TW`
+var map=new Map();
+ let tmpKey;
+arr.split("\n").forEach((str)=>{
+    if(str.length>0){
+        if(str.indexOf("--")!=-1){
+            tmpKey = str.substring(2);
+            map.set(tmpKey,new Array());
+        }else{
+            let arr=map.get(tmpKey);
+            //console.log(map.get(tmpKey));
+            arr.push(str);
+        }
+    }
+});
+
+console.log(map);
+
+
+
+let o2 = [];
+for(let [k,v] of map){
+     o2.push({
+         title:k,
+         key:'p-'+k,
+         children:v
+     })
+}
+console.log(o2);
+
+console.log('😍😍😍可以出现啥，依靠win+.键盘打出来表情');
+
+
+/* let o3 = [];
+Array.from(map,function(v,i){
+    o3.push({
+        title:v[0],
+        key:'p'+v[0],
+        children:v[1]
+    })
+    v[0]='ssss'+v[0]
+})
+console.log(o3);
+console.log(map);
+console.log('😊Map结构的数组并不会在进行数据的操作后改变原数组');
+Array.from(o3,function(v,i){
+    v.title='ssss'+v.title
+})
+console.log('🤢普通数组会改变原来数组',o3) */
+
+/* var treeDataTemp=[];
+const trr = [...map];
+console.log(trr)
+function getTreeData(){
+for(let i =0;i<trr.length;i++){
+    let node = {
+                title: trr[i][0],
+                key: 'p-'+trr[i][0],
+                children: []
+            };
+            if(trr[i][1].length>0){
+                trr[i][1].forEach((item,index)=>{
+                    node.children.push({
+                        title: item,
+                        key: item,
+                    });
+                });
+            }
+            treeDataTemp.push(node);
+
+    }
+}
+getTreeData();
+console.log(treeDataTemp);
+sessionStorage.setItem('sz',JSON.stringify(treeDataTemp)) */
+
+
+var add = function(x) { 
+  var sum = 1; 
+  var tmp = function(x) { 
+      sum = sum + x; 
+      return tmp;    
+  } 
+  tmp.toString = function() { 
+      return sum; 
+  }
+  return tmp; 
+} 
+console.log(add(1)(2)(3)(4));     
+</script>
+</html>

@@ -1,0 +1,86 @@
+.Box1{
+    width: 600px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid springgreen;
+}
+
+.Box2{
+    width: 25%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lemonchiffon;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+.Box3{
+    color: lawngreen;
+    background: magenta;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------- ---------滑动列表样式---------*/
+.buttonContainer,.listContainer{
+    margin: 24px;
+  }
+  .buttonContainer button{
+    margin:0 20px 0 0;
+  }
+  .listContainer{
+    height:200px;
+    width:448px;
+    padding: 0 24px;
+    border: 1px solid #ddd;
+    overflow:hidden
+  }
+  .li{
+      height: 37px;
+      background: #66FFFF;
+      margin-bottom: 3px;
+  }
+  .animate{
+    transition:all .5s;
+  }
+  .opacityAnimation{
+    animation:opacityAnimation 1s 1;
+    -webkit-animation:opacityAnimation 1s 1; 
+  }
+  @keyframes opacityAnimation{
+    from {opacity:0;}
+    to {opacity:1;}
+  }
+  @-webkit-keyframes opacityAnimation {
+    from {opacity:0;}
+    to {opacity:1;}
+  }
+
+
+
+.seize{
+    width: 0%;
+  height: 0%;
+  font-size: 0px;
+}
