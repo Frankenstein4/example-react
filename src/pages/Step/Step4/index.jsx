@@ -86,7 +86,7 @@ export default () => {
           />
           <ProFormDatePicker name="date" label="日期" />
           <ProFormDateRangePicker name="dateTime" label="时间区间" />
-          <ProFormTextArea name="remark" label="备注" width="lg" placeholder="请输入备注" />
+          <ProFormTextArea name="remark" label="备注" width="lg" placeholder="请输入备注"  rules={[{ required: true }]} />
           <div onClick={() => aa()}>点击</div>
         </StepsForm.StepForm>
         <StepsForm.StepForm name="checkbox" title="设置参数">

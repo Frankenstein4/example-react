@@ -272,6 +272,12 @@ export default defineConfig({
                   name: '分布表单',
                   icon: 'smile',
                   component: './Step/Step4',
+                },
+                {
+                  path: './Step5',
+                  name: '批量处理',
+                  icon: 'smile',
+                  component: './Step/Step5',
                 }
               ]
             },
