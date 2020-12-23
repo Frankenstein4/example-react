@@ -275,7 +275,7 @@ export default defineConfig({
                 },
                 {
                   path: './Step5',
-                  name: '批量处理',
+                  name: '批量处理（高级表格）',
                   icon: 'smile',
                   component: './Step/Step5',
                 }
