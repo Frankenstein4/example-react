@@ -278,6 +278,12 @@ export default defineConfig({
                   name: '批量处理（高级表格）',
                   icon: 'smile',
                   component: './Step/Step5',
+                },
+                {
+                  path: './Step6',
+                  name: '可编辑行（高级表格）',
+                  icon: 'smile',
+                  component: './Step/Step6',
                 }
               ]
             },

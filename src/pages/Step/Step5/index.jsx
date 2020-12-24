@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, DatePicker, Space, Table } from 'antd';
 import ProTable from '@ant-design/pro-table';
+import AA from '@/pages/Table/Table9';
 const { RangePicker } = DatePicker;
 const valueEnum = {
     0: 'close',
@@ -29,6 +30,8 @@ for (let i = 0; i < 5; i += 1) {
         memo: i % 2 === 1 ? '很长很长很长很长很长很长很长的文字要展示但是要留下尾巴' : '简短备注文案',
     });
 }
+
+console.log(tableListDataSource);
 const columns = [
     {
         title: '应用名称',
@@ -100,24 +103,47 @@ const columns = [
         render: () => [<a key="link">链路</a>],
     },
 ];
-export default () => {
-    return (<ProTable columns={columns} rowSelection={{
-        // 自定义选择项参考: https://ant.design/components/table-cn/#components-table-demo-row-selection-custom
-        // 注释该行则默认不显示下拉选项
-        selections: [Table.SELECTION_ALL, Table.SELECTION_INVERT],
-    }} tableAlertRender={({ selectedRowKeys, selectedRows, onCleanSelected }) => (<Space size={24}>
-          <span>
-            已选 {selectedRowKeys.length} 项
+export default function View(){
+
+    const [keys, setKeys] = useState([]);//选中的数组，根本用不着set了，棒棒的
+
+    const aa = (arr) => {
+        console.log(arr);
+    }
+
+
+
+
+
+
+
+    return (
+        <ProTable
+            columns={columns}
+            rowSelection={{
+                // 自定义选择项参考: https://ant.design/components/table-cn/#components-table-demo-row-selection-custom
+                // 注释该行则默认不显示下拉选项
+                selections: [Table.SELECTION_ALL, Table.SELECTION_INVERT],
+            }}
+            tableAlertRender={({ selectedRowKeys, selectedRows, onCleanSelected }) => {
+                return (<Space size={24}>
+                    <span>
+                        已选 {selectedRowKeys.length} 项
             <a style={{ marginLeft: 8 }} onClick={onCleanSelected}>
-              取消选择
+                            取消选择
             </a>
-          </span>
-          <span>{`容器数量: ${selectedRows.reduce((pre, item) => pre + item.containers, 0)} 个`}</span>
-          <span>{`调用量: ${selectedRows.reduce((pre, item) => pre + item.callNumber, 0)} 次`}</span>
-        </Space>)} tableAlertOptionRender={() => {
-        return (<Space size={16}>
-            <a>批量删除</a>
-            <a>导出数据</a>
-          </Space>);
-    }} dataSource={tableListDataSource} scroll={{ x: 1300 }} options={false} search={false} rowKey="key" headerTitle="批量操作" toolBarRender={() => [<Button key="show">查看日志</Button>]}/>);
+                    </span>
+                    <span>{`容器数量: ${selectedRows.reduce((pre, item) => pre + item.containers, 0)} 个`}</span>
+                    <span>{`调用量: ${selectedRows.reduce((pre, item) => pre + item.callNumber, 0)} 次`}</span>
+                </Space>)
+            }}
+            tableAlertOptionRender={({ selectedRowKeys, selectedRows, onCleanSelected }) => {
+                return (<Space size={16}>
+                    <a onClick={() => aa(selectedRowKeys)}>批量删除</a>
+                    <a>导出数据</a>
+                </Space>);
+            }}
+            dataSource={tableListDataSource} scroll={{ x: 1300 }} options={false} search={false} rowKey="key" headerTitle="批量操作"
+            toolBarRender={() => [<Button key="show">查看日志</Button>]} />
+    );
 };
