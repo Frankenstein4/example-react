@@ -157,6 +157,45 @@ const unit = (arr)=>{
     return arr.reduce((m,o)=>{m.set(o.name,o);return m;},new Map());
 }
 let arr = [{name:1},{name:2},{name:3},{name:4},{name:3},{name:2},{name:1}];
-console.log(unit(arr))
+console.log(unit(arr));
+
+
+
+
+
+
+
+
+//一行代码判断数组有空值返回false
+let list = [
+    {
+        oem_number: "1",
+        part_count: "1",
+        part_price: "1",
+        part_unit: "2",
+        quality_time: '',
+    },
+    {
+        oem_number: "1",
+        part_count: "1",
+        part_price: "1",
+        part_unit: "1",
+        quality_time: "1",
+    },
+];
+/* let boolean = list.every(row => {
+    return Object.keys(row).every(item =>!!row[item])
+}) */
+/* let boolean = false
+list.forEach(row => {
+    boolean = Object.keys(row).every(item =>!!row[item])
+}) */
+
+let boolean = list.every(o=>Object.keys(o).every(i=>o[i])) 
+
+/* let boolean = list.every(row => {
+    return Object.keys(row).every(item =>row[item])
+}) */
+console.log(boolean);
 </script>
 </html>
