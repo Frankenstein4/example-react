@@ -193,6 +193,12 @@ export default defineConfig({
                   icon: 'smile',
                   component: './Table/Table12/index',
                 },
+                {
+                    path: './table13',
+                    name: '行/列合并',
+                    icon: 'smile',
+                    component: './Table/Table13/index',
+                  },
               ],
             },
             {
@@ -242,6 +248,12 @@ export default defineConfig({
                   icon: 'smile',
                   component: './Tree/Tree8',
                 },
+                {
+                    path: './Tree9',
+                    name: '可拖拽组件',
+                    icon: 'smile',
+                    component: './Tree/Tree9',
+                  },
               ]
             },
             {

@@ -3,13 +3,13 @@
 
 
 
-export default function Tree1(){
+export default function Tree1(aa){
 
 
 
 
     return (
-        <div>
+        <div onClick={aa.onClick}>
             这是全部
         </div>
     )

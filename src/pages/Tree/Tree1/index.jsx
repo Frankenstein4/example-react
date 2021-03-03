@@ -59,6 +59,24 @@ const treeData = [
 
   const aa = [
     {
+        id: 11,
+        userId: 208,
+        upstreamLevelId: 222,
+        levelName: "此账户",
+        enableAlarm: true,
+        enableCascadingAlarm: false,
+        path: "此账户",
+        onlineBoxCount: 0,
+        offlineBoxCount: 0,
+        connectedInterconnectionCount: 0,
+        disconnectedInterconnectionCount: 0,
+        boxCount: 0,
+        subUserList: [
+        6
+        ],
+        children: null
+        },
+    {
     id: 1,
     userId: 208,
     upstreamLevelId: 0,
@@ -228,7 +246,7 @@ useEffect(()=>{
 
 const tree = () =>{
 
-    let arr = [];
+    /* let arr = [];
     aa.map(item=>{
         if(item.upstreamLevelId == 0) {
             item[`title`] = '全部区域';
@@ -238,9 +256,43 @@ const tree = () =>{
         }
     })
 
-    setAreaTree(arr);
+    setAreaTree(arr); */
+
+
+    getTreeDate(aa);
 
 }
+
+
+
+function getTreeDate(arr) {
+    function getTree(treeArr, treeItem) {
+        for (let i = 0; i < arr2.length; i++) {
+            if (arr2[i].upstreamLevelId == treeItem.key) {
+                let tmp = { "title": arr2[i].levelName, "key": arr2[i].id, "children": [] };
+                treeItem.children.push(tmp)
+                getTree(treeArr, tmp);
+                let tmp1 = arr2.splice(i, 1);
+                i--;
+                //console.log(tmp1);
+            }
+        }
+    }
+    const queue = [...arr];
+    var arr2 = queue.sort((o1, o2) => { return o1.id - o2.id });  // 浅拷贝一份，不然在做队列操作时会影响原数据
+    //var arr2 = arr.sort((o1, o2) => { return o1.id - o2.id });
+    //console.log(arr2)
+    var treeArr = [];
+    while (arr2.length > 0) {
+        let frist = arr2.shift();
+        let tmp = { "title": frist.levelName, "key": frist.id, "children": [] };
+        treeArr.push(tmp);
+        getTree(treeArr, tmp);
+    }
+    //return treeArr;
+    console.log('==========树',treeArr);
+    setAreaTree(treeArr);
+  }
 
 
 
@@ -272,6 +324,12 @@ const getChildren = (tree,arr)=>{
     console.log('onCheck', checkedKeys, info);
   };
 
+ const useCoupon = ()=>{
+    console.log(444444);
+};
+
+
+
   return (
   <div className={style.bg}>
         <div className={style.bg_tree}>
@@ -290,7 +348,7 @@ const getChildren = (tree,arr)=>{
         </div>
         <div className={style.bg_table}>
             {
-              switchId == 1 ? <Tree1/> :
+              switchId == 1 ? <Tree1 onClick={useCoupon} /> :
               switchId == 15 ? <div>上海</div> :
               <div>222</div>
             }
