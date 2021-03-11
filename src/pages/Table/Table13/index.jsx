@@ -1,7 +1,8 @@
 import React, { useState, Children } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, DatePicker, TimePicker, Select } from 'antd';
+import { backgroundColor } from 'echarts/lib/theme/dark';
 
-
+import style from './style.less';
 const data = [
     {
         key: '1',
@@ -52,6 +53,9 @@ const data = [
         address: 'Dublin No. 2 Lake Park',
     },
 ];
+
+
+
 
 
 export default function table13 () {
@@ -147,7 +151,7 @@ export default function table13 () {
 
 
     return (
-        <Table columns={columns} dataSource={data} bordered />
+        <Table columns={columns} dataSource={data} bordered className={style.bg} />
     )
 
 

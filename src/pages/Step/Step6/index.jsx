@@ -28,7 +28,7 @@ const defaultData = [
         created_at: '2020-05-26T08:19:22Z',
     }, */
 ];
-for (let i = 0; i < 100; i += 1) {
+for (let i = 0; i < 9; i += 1) {
     defaultData.push({
         id: i,
         title: '活动名称' + i,
@@ -111,6 +111,9 @@ export default () => {
                 }}>
                     编辑
           </a>,
+          <a key="editable" onClick={() => dele(record)}>
+            删除
+      </a>
             ],
         },
     ];
@@ -123,14 +126,21 @@ export default () => {
 
 
 
-
+const dele = record => {
+    const newData = [...dataSource];
+    const index = newData.findIndex(item => record.id === item.id);
+    newData.splice(index,1);
+    setDataSource(newData);
+}
 
 
 
 
     const add = () => {
+        let id = (Math.random() * 1000000).toFixed(0)
+        console.log('🥶',id)
         return {
-            id: (Math.random() * 1000000).toFixed(0),
+            id: id,
             decs: '随便'
         }
 
@@ -139,16 +149,19 @@ export default () => {
 
 
     const dataArr = record => {
-
+        let current = {...record,id:new Date().getTime()}
         const newData = [...dataSource];
         const index = newData.findIndex(item => record.id === item.id);
+        console.log(index);//-1  新增
         if (index > -1) {//编辑时候
             const item = newData[index];
             newData.splice(index, 1, { ...item, ...record });
             setDataSource(newData);
         }else{
             if (record.title == '222') {
-                newData.push(record);
+                console.log('====ne===========1',newData);
+                newData.push(current);
+                console.log('====ne===========2',newData);
                 setDataSource(newData);
             }else{
                 setDataSource(newData);
@@ -158,6 +171,8 @@ export default () => {
     }
 
 
+
+    
 
 
     return (<div>
