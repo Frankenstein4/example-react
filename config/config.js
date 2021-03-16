@@ -300,6 +300,25 @@ export default defineConfig({
               ]
             },
             {
+                path: '/Component',
+                name: '关于组件',
+                icon: 'smile',
+                routes: [
+                  {
+                    path: './Comp1',
+                    name: 'class组件父传子',
+                    icon: 'smile',
+                    component: './Component/Comp1',
+                  },
+                  {
+                    path: './Comp3',
+                    name: 'class组件子传父',
+                    icon: 'smile',
+                    component: './Component/Comp3',
+                  },
+                ]
+              },
+            {
               path: '/admin',
               name: 'admin111',
               icon: 'crown',
