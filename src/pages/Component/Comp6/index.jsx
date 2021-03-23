@@ -2,8 +2,9 @@ import React, { useState,useEffect } from 'react';
 
 
 
-import Es6cComponent from '../Comp4/index';
+import Es6cComponent from '../Comp7/index';
 import AppTwo from '../Comp5/index';
+
 
 class App extends React.Component{
 

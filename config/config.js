@@ -312,9 +312,21 @@ export default defineConfig({
                   },
                   {
                     path: './Comp3',
-                    name: 'class组件子传父',
+                    name: 'class组件子传父/兄弟传值',
                     icon: 'smile',
                     component: './Component/Comp3',
+                  },
+                  {
+                    path: './Comp6',
+                    name: '跨组件调用（订阅监听）',
+                    icon: 'smile',
+                    component: './Component/Comp6',
+                  },
+                  {
+                    path: './Comp8',
+                    name: 'Provider/Consumer传值',
+                    icon: 'smile',
+                    component: './Component/Comp8',
                   },
                 ]
               },
