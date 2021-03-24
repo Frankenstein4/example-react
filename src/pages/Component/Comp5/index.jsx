@@ -10,6 +10,17 @@ class AppTwo extends React.Component {
             msg: ''
         }
 
+        /* 
+
+            🐔🐔🐔 setState标准写法
+            this.setState((state, props) => {
+            return {counter: state.counter + props.step};
+            });
+
+
+            要避免在构造函数中引入任何副作用或订阅。如遇到此场景，请将对应的操作放置在 componentDidMount 中。
+        */
+
     }
 
     componentDidMount () {

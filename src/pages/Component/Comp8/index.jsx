@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Child from '../../BaseComponent/base';
+import Twist from './Twist';
 import { MyContext } from '../../../utils/context-manager';
 
 const fetchData = () => {
@@ -18,7 +19,8 @@ export default (props = {}) => {
 
     return (
         <MyContext.Provider value={{ setStep, setCount, setNumber, fetchData }}>
-            <Child step={step} number={number} count={count} />
+            {/* <Child step={step} number={number} count={count} /> */}
+            <Twist step={step} number={number} count={count} />
         </MyContext.Provider>
     );
 }

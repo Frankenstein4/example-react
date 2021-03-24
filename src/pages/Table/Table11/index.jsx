@@ -22,8 +22,8 @@ function App() {
 
       {/* 关键代码 */}
       {/* 提供器 */}
-      <myContext22.Provider value={{count,val}} >
-        <Counter myContext11={myContext22} val={val}  aa={val} />
+      <myContext22.Provider value={{count,val:'22'}} >
+        <Counter myContext11={myContext22} bb={val}  aa={val} />
       </myContext22.Provider>
     </div>
   );

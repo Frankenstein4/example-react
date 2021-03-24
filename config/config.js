@@ -328,6 +328,24 @@ export default defineConfig({
                     icon: 'smile',
                     component: './Component/Comp8',
                   },
+                  {
+                    path: './Comp9',
+                    name: 'useReducer透传',
+                    icon: 'smile',
+                    component: './Component/Comp9',
+                  },
+                  {
+                    path: './Comp12',
+                    name: 'useEffact',
+                    icon: 'smile',
+                    component: './Component/Comp12',
+                  },
+                  {
+                    path: './Comp13',
+                    name: '自定义hooks',
+                    icon: 'smile',
+                    component: './Component/Comp13',
+                  },
                 ]
               },
             {
