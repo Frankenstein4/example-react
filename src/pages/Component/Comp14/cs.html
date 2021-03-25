@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <textarea  id="txt" cols="30" rows="10">222</textarea>
+        </div>
+        <div>
+            <button onclick="btn()">点击</button>
+            <p>文本框内容为：</p>
+            <p class="p1"></p>
+        </div>
+
+    </div>
+</body>
+<script>
+    function btn(){
+        let txt = document.getElementById('txt');
+        document.getElementsByClassName('p1')[0].innerHTML = txt.value;
+        console.log(txt.value);
+        
+    }
+</script>
+</html>

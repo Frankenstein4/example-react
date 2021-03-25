@@ -1,5 +1,6 @@
-import React, { useState, useReducer } from 'react';
-import Child from '../Comp10/index';
+import React, { useState, useReducer,useMemo } from 'react';
+import Child from './son';
+import SecondSon from './SecondSon';
 import { MyContext } from '../../../utils/context-manager';
 
 
@@ -64,7 +65,8 @@ function bookReducer(state, action) {
 }; */
 
 
-export default (props = {}) => {
+
+/* export default (props = {}) => {
     const [state, dispatch] = useReducer(reducer, initState);
 
     return (
@@ -72,4 +74,20 @@ export default (props = {}) => {
             <Child  />
         </MyContext.Provider>
     );
+}; */
+
+
+
+
+export default (props = {}) => {
+    const [state, dispatch] = useReducer(reducer, initState);
+
+    return useMemo(() => {
+        console.log('name memo 触发')
+        return (
+            <MyContext.Provider value={{ dispatch,state }}>
+                <SecondSon/>
+            </MyContext.Provider>
+        );
+    }, [dispatch,state.count,state.number,state.step]); 
 };

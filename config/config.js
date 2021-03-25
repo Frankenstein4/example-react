@@ -346,6 +346,18 @@ export default defineConfig({
                     icon: 'smile',
                     component: './Component/Comp13',
                   },
+                  {
+                    path: './Comp15',
+                    name: 'useMemo和useEffect',
+                    icon: 'smile',
+                    component: './Component/Comp15',
+                  },
+                  {
+                    path: './Comp14',
+                    name: ' useMemo解决透传性能问题',
+                    icon: 'smile',
+                    component: './Component/Comp14',
+                  },
                 ]
               },
             {
