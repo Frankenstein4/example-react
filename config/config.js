@@ -358,6 +358,18 @@ export default defineConfig({
                     icon: 'smile',
                     component: './Component/Comp14',
                   },
+                  {
+                    path: './Comp16',
+                    name: 'redux示例',
+                    icon: 'smile',
+                    component: './Component/Comp16',
+                  },
+                  {
+                    path: './Comp17',
+                    name: 'redux',
+                    icon: 'smile',
+                    component: './Component/Comp17',
+                  },
                 ]
               },
             {
