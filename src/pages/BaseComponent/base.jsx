@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, memo } from 'react';
+import React, { useContext, useEffect, memo,useState } from 'react';
 
 import { MyContext } from '../../utils/context-manager';
+import { fetchProfileData } from "../Component/Comp8/fakeApi";
 
 /* export default memo((props = {}) => {
     const { setStep, setNumber, setCount, fetchData } = useContext(MyContext);
@@ -26,7 +27,7 @@ import { MyContext } from '../../utils/context-manager';
     );
 }); */
 
-
+const resource = fetchProfileData();
 
 const  memoApp = (context)=>{
     
@@ -38,8 +39,11 @@ const  memoApp = (context)=>{
         })
     }, []);
 
+    const [user,setuser] = useState(resource.user.read()); 
+
     return (
         <div>
+            <h1>{user.name}</h1>
             <p>step is : {context.step}</p>
             <p>number is : {context.number}</p>
             <p>count is : {context.count}</p>

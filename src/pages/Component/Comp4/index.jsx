@@ -1,8 +1,15 @@
 import React, { useState,useEffect } from 'react';
 
+import { fetchProfileData } from "../Comp8/fakeApi";
+
+const resource = fetchProfileData();
+
 class Es6cComponent extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            yanchi:resource.user.read(),
+        }
     }
     bgClick(color){
         this.props.al();

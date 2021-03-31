@@ -54,7 +54,7 @@ class AppTwo extends React.Component {
         return (
             <div >
                 <h1>组件二</h1>
-                <p style={{ background: this.props.bg }}>兄弟组件改变的背景色{this.props.bg}</p>
+                <p style={{ background: this.props.bg }}>接收兄弟传来的，兄弟组件改变的背景色{this.props.bg}</p>
                 <h2>没有任何嵌套关系的组件之间传值 ：
                     <b>{this.state.msg}</b>
                 </h2>

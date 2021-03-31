@@ -1,16 +1,22 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,Component, Suspense } from 'react';
+import { Spin } from 'antd';
+import { fetchProfileData } from "../Comp8/fakeApi";
 
+// import Es6cComponent from '../Comp4/index';
+// import AppTwo from '../Comp5/index';
 
+const Es6cComponent = React.lazy(() => import('../Comp4/index'))
+const AppTwo = React.lazy(() => import('../Comp5/index'))
+//const Home = React.lazy(() => import(/* webpackPrefetch: true */ 'views/Home'));
 
-import Es6cComponent from '../Comp4/index';
-import AppTwo from '../Comp5/index';
+const resource = fetchProfileData();
 
 class App extends React.Component{
 
     constructor(props){
         super(props);
         this.state={
-            bg:'#999'
+            bg:'#999',
         }
     }
 
@@ -32,8 +38,13 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <Es6cComponent bg={this.state.bg} changeColor={(color)=>{this.bgChange(color)}} al={()=>this.al()} />
+                <Suspense fallback={<div><Spin tip="Loading..." /></div>}>
+
+                <Es6cComponent bg={this.state.bg} changeColor={(color) => { this.bgChange(color) }} al={()=>this.al()} />
                 <AppTwo bg={this.state.bg} />
+                    
+                </Suspense>
+
             </div>
         )
     }

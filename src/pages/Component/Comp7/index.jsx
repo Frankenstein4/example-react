@@ -18,7 +18,7 @@ class Es6cComponent extends React.Component{
             <div>
                 <h1>组件一</h1>
                 <p style={{background:this.props.bg}}>父组件传来的背景色{this.props.bg}</p>
-               <button onClick={()=>{this.bgClick()}}>改变背景色</button>
+               <button onClick={()=>{this.bgClick()}}>组件一改变背景色</button>
             </div>
         )
     }

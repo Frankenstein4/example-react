@@ -370,6 +370,12 @@ export default defineConfig({
                     icon: 'smile',
                     component: './Component/Comp17',
                   },
+                  {
+                    path: './Comp20',
+                    name: '懒加载',
+                    icon: 'smile',
+                    component: './Component/Comp20',
+                  },
                 ]
               },
             {
