@@ -378,6 +378,25 @@ export default defineConfig({
                   },
                 ]
               },
+              {
+                path: '/Network',
+                name: '网络请求',
+                icon: 'smile',
+                routes: [
+                  {
+                    path: './Example1',
+                    name: 'react-query',
+                    icon: 'smile',
+                    component: './Network/Example1',
+                  },
+                  {
+                    path: './Example2',
+                    name: 'react中加入iframe',
+                    icon: 'smile',
+                    component: './Network/Example2',
+                  },
+                ]
+              },
             {
               path: '/admin',
               name: 'admin111',

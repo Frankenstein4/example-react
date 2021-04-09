@@ -42,7 +42,11 @@ class AppTwo extends React.Component {
         console.log(val, '🤷‍♀️')
         this.setState({
             msg: val
-        })
+        },()=>{})
+        /* this.setState((state, props) => ({
+            msg: state.msg+props.val
+          })); */
+        console.log(this.state.msg);//打印的是旧的值
     }
 
 

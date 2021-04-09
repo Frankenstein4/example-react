@@ -9,7 +9,7 @@ export default {
   dev: {
     '/devApi': {
       //target: 'https://preview.pro.ant.design',
-      target:'http://127.0.0.1:8888/api/private/v1',
+      target:'http://172.31.0.3:21081',
       changeOrigin: true,
       pathRewrite: {
         '^/devApi': '',
