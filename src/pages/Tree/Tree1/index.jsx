@@ -1,6 +1,7 @@
 import { Tree } from 'antd';
 import React, {createContext, useContext, useEffect, useState} from "react";
 import { DownOutlined } from '@ant-design/icons';
+import {history} from 'umi';
 
 import style from './style.less';
 
@@ -238,6 +239,7 @@ useEffect(()=>{
     console.log(aa)
     tree();
 
+    
 
 },[]);
 
@@ -318,6 +320,7 @@ const getChildren = (tree,arr)=>{
   const onSelect = (selectedKeys, info) => {
     console.log('selected', selectedKeys, info);
     setswitchId(selectedKeys);
+    sessionStorage.setItem('item','测试');
   };
 
   const onCheck = (checkedKeys, info) => {
@@ -329,14 +332,21 @@ const getChildren = (tree,arr)=>{
 };
 
 
+const history_on = ()=>{
+    history.push({
+        pathname: '/Component/Comp15',
+      });
+}
+
 
   return (
   <div className={style.bg}>
         <div className={style.bg_tree}>
             {
                 areaTree && areaTree.length > 0 ?   <DirectoryTree className={style.tree}
-                defaultExpandedKeys={[areaTree[0].id]}
-                defaultSelectedKeys={[areaTree[0].id]}
+                defaultExpandedKeys={[areaTree[0].key]}
+                defaultSelectedKeys={[areaTree[0].key]}
+                defaultExpandAll={true}
                 switcherIcon={<DownOutlined />}
                 onSelect={onSelect}
                 showIcon={true}
@@ -349,7 +359,7 @@ const getChildren = (tree,arr)=>{
         <div className={style.bg_table}>
             {
               switchId == 1 ? <Tree1 onClick={useCoupon} /> :
-              switchId == 15 ? <div>上海</div> :
+              switchId == 15 ? <div onClick={history_on}>上海</div> :
               <div>222</div>
             }
 

@@ -107,11 +107,25 @@ const BasicLayout = props => {
       formatMessage={formatMessage}
       onCollapse={handleMenuCollapse}
       onMenuHeaderClick={() => history.push('/')}
+      onPageChange={(i,t)=>{
+        console.log(i,t);
+        if(i.pathname=='/Tree/Tree1'){
+          sessionStorage.removeItem('item');
+        }
+        
+      }}
+      subMenuItemRender={(item, index, logo) => {//有子，subMenu
+        //console.log(item)
+        return <div style={{paddingLeft: 8}} >{item.icon}<span>{item.name}</span></div>
+      }}
       menuItemRender={(menuItemProps, defaultDom) => {
+         // console.log(menuItemProps)
         if (menuItemProps.isUrl || !menuItemProps.path) {
           return defaultDom;
         }
-
+        /* if (menuItemProps.name === 'welcome管理员') {
+            sessionStorage.removeItem('item');
+        } */
         return <Link to={menuItemProps.path}>{defaultDom}</Link>;
       }}
       breadcrumbRender={(routers = []) => [
