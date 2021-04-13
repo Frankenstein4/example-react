@@ -34,8 +34,10 @@ graphic: {
             /* left: 'center',
             top: '90' */
             left: 'center',
-              top: 'center'
+              top: 'center',
+              cursor:'default',//是鼠标指向圈圈内图片不显示手指
             },
+            
             /* {
              type: 'text',
              left: 'center', // 相对父元素居中
