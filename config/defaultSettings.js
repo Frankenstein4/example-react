@@ -11,7 +11,7 @@ const proSettings = {
   menu: {
     locale: false,//关闭国际化
   },
-  title: '7x Networks',
+  title: 'demo案例系统',
   pwa: false,
   iconfontUrl: '',
 };

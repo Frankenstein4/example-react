@@ -5,6 +5,10 @@ import proxy from './proxy';
 
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
+  history: {
+        type: 'hash',//确保配置到服务器还能刷新浏览器
+  },
+  publicPath:'/dist/',
   hash: true,
   antd: {},
   dva: {
