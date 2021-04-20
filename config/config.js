@@ -399,6 +399,12 @@ export default defineConfig({
                     icon: 'smile',
                     component: './Network/Example2',
                   },
+                  {
+                    path: './Example3',
+                    name: '防抖',
+                    icon: 'smile',
+                    component: './Network/Example3',
+                  },
                 ]
               },
             {

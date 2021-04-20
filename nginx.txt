@@ -1,0 +1,14 @@
+# nginx启动/重启/停止
+cd /usr/local/nginx/sbin
+# 启动
+./nginx -c /usr/local/nginx/conf/nginx.conf
+# 重新加载配置并启动
+./nginx -s reload
+# 重启nginx
+./nginx -s reopen
+# 强制停止
+./nginx -s stop
+# 优雅停止
+./nginx -s quit
+# 测试、检测配置
+./nginx -t
