@@ -1,0 +1,114 @@
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+
+</head>
+<body>  音乐
+<audio src="620.mp3" controls="controls" preload id="music1" hidden>
+</audio>
+<span id="bf" onclick="bf();">播放/暂停</span>
+<span id="bf" onclick="rbf();">重新播放</span>
+<script>
+function rbf(){
+ var audio = document.getElementById('music1'); 
+ audio.currentTime = 0;
+}
+function bf(){
+ var audio = document.getElementById('music1'); 
+ if(audio!==null){             
+    //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+     //alert(audio.paused);
+  if(audio.paused)                     {                 
+      audio.play();//audio.play();// 这个就是播放  
+  }else{
+   audio.pause();// 这个就是暂停
+  }
+ } 
+}
+   
+setInterval(()=>{
+    var audio = document.getElementById('music1'); 
+    audio.play();
+},1000)
+   
+</script>
+<script>
+    let tvData = [{
+        "id": 8,
+        "customerName": "保时捷",
+        "alarmNumber": 2,
+        "lastHourAlarmNumber": 0,
+        "boxVoList": [
+            {"sn": "7x00123768853cabd", "flag": false},
+            {"sn": "7x0012376885a5ba5", "flag": false},
+            {"sn": "7x0012016081001efd23f", "flag": false},
+            {"sn": "7x0012016081001efd26b", "flag": false},
+            {"sn": "7x0012014040101544000", "flag": false}
+        ],
+        "weekList": []
+    }]
+
+    let newTvData = [{
+        "id": 22,
+        "customerName": "易安联-测试",
+        "alarmNumber": 0,
+        "lastHourAlarmNumber": 0,
+        "boxVoList": [
+            {"sn": "7x00123768853cabd", "flag": false},
+            {"sn": "7x0012376885a5ba5", "flag": false},
+            {"sn": "7x0012016081001efd23f", "flag": false},
+            {"sn": "7x0012016081001efd26b", "flag": false},
+            // {"sn": "7x0012014040101544000", "flag": false},
+            {"sn": "7x0012014040101544001", "flag": false},
+        ],
+        "weekList": []
+    }];
+
+    let oldData = new Set();
+    tvData.forEach(value => {
+        if (value.boxVoList.length > 0) {
+            value.boxVoList.forEach(value1 => {
+                oldData.add(value1.sn);
+            })
+        }
+    });
+
+    let newData = new Set();
+    newTvData.forEach(value => {
+        if (value.boxVoList.length > 0) {
+            value.boxVoList.forEach(value1 => {
+                newData.add(value1.sn);
+            })
+        }
+    });
+
+    console.log("老的", oldData);
+    console.log("新的", newData);
+    //如果新的数据长度比老的大，肯定有新的加入
+    if (newData.size > oldData.size) {
+        console.log("响铃");
+    } else {
+        //如果新的数据长度比老的数据一样，可能有的删除，有的新增
+        oldData.forEach(value => {
+            if (newData.has(value)) {
+                oldData.delete(value);
+            }
+        });
+        //如果老的没有删除完毕，说明有一条数据是不一样的，也就是新增的数据
+        if (oldData.size > 0) {
+            console.log("响铃");
+        }
+    }
+    //把旧的数据替换成最新的数据，等下次判断
+    oldData = newData;
+
+    console.log("老的", oldData);
+    console.log("新的", newData);
+</script>
+</body>
+</html>
