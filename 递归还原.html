@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css变量</title>
+  </head>
+  <style>
+      body{
+          --color:red ;
+          --width:500px;
+      }
+      div{
+          color: var(--color , green);
+          width: calc(100% - var(--width));/**100%减去变量宽度*/
+      }
+  </style>
+  <body>
+      <div>
+          这是一行文字
+      </div>
+  </body>
+  <script>
+    var arr = [
+      {
+        title: '华东',
+        key: 5,
+        children: [
+          {
+            title: '上海',
+            key: 12,
+            children: [],
+            uid: 5,
+          },
+          {
+            title: '浙江',
+            key: 13,
+            children: [
+              {
+                title: '23435',
+                key: 21,
+                children: [],
+                uid: 13,
+              },
+            ],
+            uid: 5,
+          },
+          {
+            title: 'vv',
+            key: 14,
+            children: [],
+            uid: 5,
+          },
+          {
+            title: 'ss',
+            key: 18,
+            children: [],
+            uid: 5,
+          },
+        ],
+      },
+      {
+        title: '华西',
+        key: 24,
+        children: [
+          {
+            title: '华西1',
+            key: 25,
+            children: [],
+            uid: 24,
+          },
+          {
+            title: '华西2',
+            key: 26,
+            children: [],
+            uid: 24,
+          },
+        ],
+      },
+    ];
+
+    let children = [];
+
+    /*   function getChildren(data) {
+        data.forEach(value => {
+            children.push({
+                title: value.title,
+                key: value.key,
+                uid: value.uid
+            });
+            if (value.children != null && value.children.length > 0) {
+                getChildren(value.children);
+            }   
+        })
+    }
+
+    getChildren(arr);
+    console.log(children) */
+
+    function method2(data) {
+      let tmp = [...data];
+      let value;
+      while ((value = tmp.shift())) {
+        children.push({
+          title: value.title,
+          key: value.key,
+          uid: value.uid,
+        });
+        if (value.children != null && value.children.length > 0) {
+          tmp.push(...value.children);
+        }
+      }
+    }
+
+    method2(arr);
+    console.log(children);
+
+    //什么狗屎办法
+    //     function aa(data){
+    //         let {children} = data;
+    //         arr.map(i=>aa(i));
+    //         return children
+    //     }
+
+    //    console.log(aa(arr)) ;
+
+    let array = [2, 3, [4, 6, [1, 8,[9,13,[14,15,16]]]], 12, 10];
+    var arrs = [];
+    function getArray(arr) {
+      
+      /* for (var i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+          getArray(arr[i]);
+        } else {
+          arrs.push(arr[i]);
+        }
+      } */
+      arr.forEach(function (v, i) {
+        if (Array.isArray(v)&&v.length>0) {
+          getArray(v);
+        } else {
+          arrs.push(v);
+        }
+        });
+      return arrs;
+    }
+    console.log(getArray(array));
+
+
+
+
+
+
+//假如此数组为初始数据
+let list = [{
+		key: "a",
+		value: '1'
+	},
+	{
+		key: "b",
+		value: '2'
+	},
+	{
+		key: "c",
+		value: '3'
+	},
+	{
+		key: "d",
+		child: [{
+				key: "d1",
+				value: '4',
+                child:[
+                    {
+                        key:'d1-1',
+                        value:'7'
+                    }
+                ]
+			},
+			{
+				key: "d2",
+				value: '5'
+			},
+			{
+				key: "d3",
+				value: '6'
+			},
+		]
+	}
+	
+	]
+//此为需要的数据
+	let a = {
+		a: 1,
+		b: 2,
+		c: 3,
+		d: {
+			d1: 4,
+			d2: 5,
+			d3: 6
+		}
+	}
+	console.log(parseValue(list))
+//递归方法
+	function parseValue(item) {
+		let obj = {}
+		item.forEach(element => {
+			const temp = { ...element}
+			if(temp.child && temp.child.length > 0) {
+				obj[temp.key] = parseValue(temp.child) //将此函数赋值给有child属性的key
+			} else {
+				obj[temp.key] = temp.value
+			}
+		})
+		return obj
+	}
+
+
+
+
+
+
+
+
+    
+
+    var tdata = [
+      {
+        code: 'has Value Domain Member',
+        value: '未婚',
+        properties: [
+          {
+            code: 'MDM VD Member PKID',
+            value: '4055',
+            properties: [
+              {
+                code: 'MDM VD Member PKID',
+                value: '4055',
+                properties: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        code: 'MDM VD Member Name',
+        value: '未婚',
+      },
+      {
+        code: 'MDM VD Member ObjectID',
+        value: '10',
+      },
+      {
+        code: 'MDM VD Member Code',
+        value: '10',
+      },
+      {
+        code: 'MDM VD Member RefStandard',
+        value: 'GB/T 2261.2-2003 个人基本信息分类与代码 第2部分: 婚姻状况代码',
+      },
+      {
+        code: 'VD Member Sequence',
+        value: '1',
+      },
+    ];
+
+    function func(tdata, resData) {
+      if (Array.isArray(tdata) && tdata.length > 0) {
+        tdata.forEach(function (v, i) {
+          var newValue = v.code + ':' + v.value;
+          resData[i] = {};
+          resData[i].label = newValue;
+          var arr = [];
+          func(v.properties, arr);
+          resData[i].children = arr;
+        });
+      }
+    }
+    var resArr = [];
+    func(tdata, resArr);
+
+    console.log(resArr);
+  </script>
+</html>
