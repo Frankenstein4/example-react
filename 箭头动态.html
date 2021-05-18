@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg实现直线带左箭头</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /*保证盒子的大小不会因为padding值的影响而变大。默认情况下padding的值会影响盒子的大小*/
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: lightblue;
+            /*背景图片同窗口完全自适应*/
+            background-size: 100% 100%;
+            /*去除页面的滚动条*/
+            overflow: hidden;
+        }
+        #box {
+            width: 20%;
+            height: 2.5%;
+            /*border: yellow solid 1px;*/
+            margin-left: 30%;
+            margin-top: 20%;
+        }
+        #svg14 {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        #polygon14 {
+            fill: black;
+            stroke-width: 1;
+            stroke: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <svg id="svg14" viewBox="0 0 305 15" preserveaspectratio='none'>
+        <polygon id="polygon14"  points='5,7 10,1 1,7 10,14 5,7 304,7 '  />
+    </svg>
+</div>
+</body>
+</html>

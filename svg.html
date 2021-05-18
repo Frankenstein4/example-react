@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>svg实现直线带双向箭头</title>
+    <style>
+
+
+svg {
+  	display: block;
+  	position: absolute;
+}
+
+path {
+	stroke: rgba(255, 0, 0 ,.2);
+}
+
+.ball {
+  	width: 2px;
+  	height: 2px;
+  	background-color: red;
+  	border-radius: 50%;
+  
+  	offset-path: path('M0 400, 100 200');
+  	offset-distance: 0%;
+
+  	animation: move-ball 2s ease-in infinite;
+}
+
+@keyframes move-ball {
+  	to {
+    	offset-distance: 100%;
+  	}
+}
+
+#polygon14 {
+            fill: black;
+            stroke-width: 1;
+            stroke: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <svg width="400px" height="400px" version="1.1">
+        <defs>
+        
+            <marker id="idArrow"
+            
+                     viewBox="0 0 20 20" refX="0" refY="10"
+            
+                     markerUnits="strokeWidth" markerWidth="3" markerHeight="10"
+            
+                     orient="auto">
+            
+                     <path d="M 0 0 L 20 10 L 0 20 z" fill="#888888" stroke="#888888"/>
+            
+                  </marker>
+            
+            </defs>
+        <path fill="transparent" stroke="#888888" stroke-width="2" d="M0 400, 100 200" class="path" marker-end="url(#idArrow)"></path>
+        <path stroke="#888888" stroke-width="2" fill="#888888" d="M0 400, 100 200" marker-end="url(#idArrow)"  />
+    </svg>
+
+
+    
+    <div class="ball"></div>
+
+
+
+
+    <svg id="isvg" >
+
+        <defs>
+        
+        <marker id="idArrow1"
+        
+                 viewBox="0 0 20 20" refX="0" refY="10"
+        
+                 markerUnits="strokeWidth" markerWidth="3" markerHeight="10"
+        
+                 orient="auto">
+        
+                 <path d="M 0 0 L 20 10 L 0 20 z" fill="purple" stroke="black"/>
+        
+              </marker>
+        
+        </defs>
+        
+          <path d="M 50 450 l 0 -350"  stroke="blue"  stroke-width="3" fill="none" d="M 50 450 H 700" marker-end="url(#idArrow1)" />
+        
+          <path stroke="purple" stroke-width="3" fill="none" d="M 50 450 H 700" marker-end="url(#idArrow1)"  />
+        
+        </svg>
+</div>
+</body>
+</html>
