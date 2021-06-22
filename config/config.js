@@ -9,6 +9,7 @@ export default defineConfig({
         type: 'hash',//确保配置到服务器还能刷新浏览器
   },
   publicPath:'/dist/',
+  //publicPath:'dist/',//从相对路径
   hash: true,
   antd: {},
   dva: {
