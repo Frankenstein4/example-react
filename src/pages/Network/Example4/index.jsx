@@ -129,7 +129,7 @@ const columns = [
     },
 ];
 const data = Array.from(
-    {
+    {   
         length: 100000,
     },
     (_, key) => ({
