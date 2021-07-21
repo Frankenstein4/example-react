@@ -406,6 +406,12 @@ export default defineConfig({
                     icon: 'smile',
                     component: './Network/Example3',
                   },
+                  {
+                    path: './Example4',
+                    name: '虚拟列表',
+                    icon: 'smile',
+                    component: './Network/Example4',
+                  },
                 ]
               },
             {
