@@ -118,6 +118,12 @@ export default defineConfig({
                   icon: 'smile',
                   component: './Echarts/Echarts7/index',
                 },
+                {
+                    path: './echarts8',
+                    name: '地图',
+                    icon: 'smile',
+                    component: './Echarts/Echarts8',
+                  },
               ]
             },
             {

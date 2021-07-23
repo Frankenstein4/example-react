@@ -1,6 +1,7 @@
 import React, { useState,useEffect,Component, Suspense } from 'react';
 import { Spin } from 'antd';
 import { fetchProfileData } from "../Comp8/fakeApi";
+import classNames from 'classnames';
 import './style.less'
 
 // import Es6cComponent from '../Comp4/index';
@@ -38,8 +39,8 @@ class App extends React.Component{
 
     render(){
         return(
-            <div>
-                <p className="div1">1111111</p>
+            <div className='div1'>
+                <p /* className="div1" */ className='div2'>1111111</p>
                 <Suspense fallback={<div><Spin tip="Loading..." /></div>}>
 
                 <Es6cComponent bg={this.state.bg} changeColor={(color) => { this.bgChange(color) }} al={()=>this.al()} />
