@@ -123,7 +123,13 @@ export default defineConfig({
                     name: '地图',
                     icon: 'smile',
                     component: './Echarts/Echarts8',
-                  },
+                },
+                {
+                    path: './echarts9',
+                    name: '地图geo方式',
+                    icon: 'smile',
+                    component: './Echarts/Echarts9',
+                },
               ]
             },
             {
@@ -417,6 +423,12 @@ export default defineConfig({
                     name: '虚拟列表',
                     icon: 'smile',
                     component: './Network/Example4',
+                  },
+                  {
+                    path: './Example5',
+                    name: '省市区级联列表',
+                    icon: 'smile',
+                    component: './Network/Example5',
                   },
                 ]
               },

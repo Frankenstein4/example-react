@@ -85,7 +85,6 @@ const onSecondCityChange = value => {
 
   const aa =  throttle((t)=>{
     console.log('t',t)//t 123123123
-    alert(t);
   })
 
 
