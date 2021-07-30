@@ -10,7 +10,7 @@ import TodoFooter from './TodoFooter';
 class TodoApp extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props)
+    console.log('this.props',this.props)
   }
   // 实际上处理增加todo的方法 这个方法通过props分发到了Todoheader
   addTodoHandle(text) {
@@ -23,6 +23,7 @@ class TodoApp extends Component {
   // 处理显示 通过 props分发到了TodoFooter
   showFilter(filter) {
     this.props.dispatch(TodoAction.showFilter(filter));
+    //相当于 this.props.dispatch({type:'SHOW_FILTER', filter});
   }
   render() {
     return (
@@ -54,12 +55,12 @@ const filterTodos = (todos, filter) => {
 }
 // 用于connect进行state的注入
 const getList = (state) => {
-  console.log(state.filter);
+  console.log('state',state);
   return {
     todos: filterTodos(state.todos, state.filter),
     filter: state.filter,
-    aa:'hello'
-  };
+    aa:'hello'+state.filter
+  };//???这里return出去的是组件的props吗  答案：是的
 };
 export default connect(getList)(TodoApp);
 

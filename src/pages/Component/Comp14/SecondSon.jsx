@@ -20,7 +20,7 @@ export default memo((props = {}) => {
             <p>count is : {state.count}</p>
             <hr />
             <div>
-                <button onClick={() => { dispatch({ type: 'stepInc' }) }}>step ++</button>
+                <button onClick={() => { dispatch({ type: 'stepInc',num:9 }) }}>step ++</button>
                 <button onClick={() => { dispatch({ type: 'numberInc' }) }}>number ++</button>
                 <button onClick={() => { dispatch({ type: 'count' }) }}>number + step</button>
             </div>

@@ -38,7 +38,7 @@ const todos = (todos = list, active) => {
   }
 }
 // 处理 filter 
-const filter = (filter = TodoConstant.FILTER.SHOW_ALL, active) => {
+const filter = (filter = TodoConstant.FILTER.SHOW_ALL, active) => {//active 相当于vuex中的载荷 最好是个对象
   switch (active.type) {
     case TodoConstant.SHOW_FILTER:
       return active.filter;

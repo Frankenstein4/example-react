@@ -19,6 +19,10 @@ const TodoAction = {
   showFilter(filter) {
     return {
       type: TodoConstant.SHOW_FILTER,
+      /* 不管谁调用此方法，type都是死的，关键是filter是不定的 初始化页面时候 filter是 TodoConstant.FILTER.SHOW_ALL
+          为什么呢 ？因为redux初始化时候 子Reducer 即const filter=(state,action)=>{...}
+          初始时 state = TodoConstant.FILTER.SHOW_ALL
+      */
       filter
     }
   }
