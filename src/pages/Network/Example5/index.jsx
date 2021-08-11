@@ -1,42 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Cascader } from 'antd';
-
+import provinces  from "@/utils/Provinces";
+//import {options as provinces} from  "@/utils/Provinces";
 export default function AA(){
 
-    const options = [
-        {
-          value: 'zhejiang',
-          label: 'Zhejiang',
-          children: [
-            {
-              value: 'hangzhou',
-              label: 'Hangzhou',
-              children: [
-                {
-                  value: 'xihu',
-                  label: 'West Lake',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          value: 'jiangsu',
-          label: 'Jiangsu',
-          children: [
-            {
-              value: 'nanjing',
-              label: 'Nanjing',
-              children: [
-                {
-                  value: 'zhonghuamen',
-                  label: 'Zhong Hua Men',
-                },
-              ],
-            },
-          ],
-        },
-      ];
+
       
       function onChange(value) {
         console.log(value);
@@ -46,8 +14,7 @@ export default function AA(){
     return (
         <div>
              <Cascader
-    defaultValue={['zhejiang', 'hangzhou', 'xihu']}
-    options={options}
+    options={provinces}
     onChange={onChange}
   />
           </div>
