@@ -3,8 +3,8 @@
  * You can view component api by:
  * https://github.com/ant-design/ant-design-pro-layout
  */
-import ProLayout, { DefaultFooter } from '@ant-design/pro-layout';
-import React, { useEffect } from 'react';
+import ProLayout, { DefaultFooter,PageContainer } from '@ant-design/pro-layout';
+import React, { useEffect,useState } from 'react';
 import { Link, useIntl, connect, history } from 'umi';
 import { GithubOutlined } from '@ant-design/icons';
 import { Result, Button } from 'antd';
@@ -12,7 +12,7 @@ import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
 import { getAuthorityFromRouter } from '@/utils/utils';
 import logo from '../assets/logo/logo.svg';
-
+import request from '@/utils/request';
 const noMatch = (
   <Result
     status={403}
@@ -26,6 +26,7 @@ const noMatch = (
   />
 );
 
+import defaultProps from './menu';
 /**
  * use Authorized check all menu item
  */
@@ -64,6 +65,8 @@ const defaultFooterDom = (
   />
 );
 
+
+
 const BasicLayout = props => {
   const {
     dispatch,
@@ -81,6 +84,9 @@ const BasicLayout = props => {
     if (dispatch) {
       dispatch({
         type: 'user/fetchCurrent',
+      });
+      dispatch({
+        type: 'menu/getMenuData',
       });
     }
   }, []);
@@ -102,63 +108,58 @@ const BasicLayout = props => {
   };
   const { formatMessage } = useIntl();
   return (
-    <ProLayout
-      logo={logo}
-      formatMessage={formatMessage}
-      onCollapse={handleMenuCollapse}
-      onMenuHeaderClick={() => history.push('/')}
-      onPageChange={(i,t)=>{
-        console.log(i,t);
-        if(i.pathname=='/Tree/Tree1'){
-          sessionStorage.removeItem('item');
-        }
-        
-      }}
-      subMenuItemRender={(item, index, logo) => {//有子，subMenu
-        //console.log(item)
-        return <div style={{paddingLeft: 8}} >{item.icon}<span>{item.name}</span></div>
-      }}
-      menuItemRender={(menuItemProps, defaultDom) => {
-         // console.log(menuItemProps)
-        if (menuItemProps.isUrl || !menuItemProps.path) {
-          return defaultDom;
-        }
-        /* if (menuItemProps.name === 'welcome管理员') {
-            sessionStorage.removeItem('item');
-        } */
-        return <Link to={menuItemProps.path}>{defaultDom}</Link>;
-      }}
-      breadcrumbRender={(routers = []) => [
-        {
-          path: '/',
-          breadcrumbName: formatMessage({
-            id: 'menu.home',
-          }),
-        },
-        ...routers,
-      ]}
-      itemRender={(route, params, routes, paths) => {
-        const first = routes.indexOf(route) === 0;
-        return first ? (
-          <Link to={paths.join('/')}>{route.breadcrumbName}</Link>
-        ) : (
-          <span>{route.breadcrumbName}</span>
-        );
-      }}
-      footerRender={() => defaultFooterDom}
-      menuDataRender={menuDataRender}
-      rightContentRender={() => <RightContent />}
-      {...props}
-      {...settings}
-    >
-      <Authorized authority={authorized.authority} noMatch={noMatch}>
-        {children}
-      </Authorized>
-    </ProLayout>
+       <ProLayout
+          logo={logo}
+          formatMessage={formatMessage}
+          onCollapse={handleMenuCollapse}
+          onMenuHeaderClick={() => history.push('/')}
+          onPageChange={(i,t)=>{
+            if(i.pathname=='/Tree/Tree1'){
+              sessionStorage.removeItem('item');
+            }
+            
+          }}
+          subMenuItemRender={(item, index, logo) => {//有子，subMenu
+            return <div style={{paddingLeft: 8}} >{item.icon}<span>{item.name}</span></div>
+          }}
+          menuItemRender={(menuItemProps, defaultDom) => {
+            if (menuItemProps.isUrl || !menuItemProps.path) {
+              return defaultDom;
+            }
+            return <Link to={menuItemProps.path}>{defaultDom}</Link>;
+          }}
+          breadcrumbRender={(routers = []) => [
+            {
+              path: '/',
+              breadcrumbName: formatMessage({
+                id: 'menu.home',
+              }),
+            },
+            ...routers,
+          ]}
+          itemRender={(route, params, routes, paths) => {
+            const first = routes.indexOf(route) === 0;
+            return first ? (
+              <Link to={paths.join('/')}>{route.breadcrumbName}</Link>
+            ) : (
+              <span>{route.breadcrumbName}</span>
+            );
+          }}
+          footerRender={() => defaultFooterDom}
+          menuDataRender={menuDataRender}
+          rightContentRender={() => <RightContent />}
+          {...props}
+          {...settings}
+        >
+          <Authorized authority={authorized.authority} noMatch={noMatch}>
+            {children}
+          </Authorized>
+        </ProLayout>
   );
 };
 
-export default connect(({ global, settings }) => ({
+export default connect(({ global, settings,menu }) => ({
   collapsed: global.collapsed,
   settings,
+  menuData:menu.menuData
 }))(BasicLayout);
