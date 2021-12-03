@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const treeData = [
+    {
+      title: 'Node1',
+      value: 'Tree',
+      isCheck:false,
+      isLook:false,
+      isShow:true,
+      children: [
+        {
+          title: 'Child Node1',
+          value: 'Tree-1',
+          isCheck:false,
+          isLook:false,
+          isShow:true,
+        },
+        {
+          title: 'Child Node2',
+          value: 'Tree-2',
+          isCheck:false,
+          isLook:false,
+          isShow:true,
+          children: [
+            {
+              title: 'Child Node1',
+              value: 'Tree-2-1',
+              isCheck:false,
+              isLook:false,
+              isShow:true,
+              children: [
+                {
+                  title: 'Child Node1',
+                  value: 'Tree-2-1-1',
+                  isCheck:false,
+                  isLook:false,
+                  isShow:true,
+                },
+                {
+                  title: 'Child Node2',
+                  value: 'Tree-2-1-2',
+                  isCheck:false,
+                  isLook:false,
+                  isShow:true,
+                },
+              ],
+            },
+            {
+              title: 'Child Node2',
+              value: 'Tree-2-2',
+              isCheck:false,
+              isLook:false,
+              isShow:true,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Node2',
+      value: 'table',
+      isCheck:false,
+      isLook:false,
+      isShow:true,
+      children: [
+        {
+          title: 'Child Node1',
+          value: 'table-1',
+          isCheck:false,
+          isLook:false,
+          isShow:true,
+        },
+        {
+          title: 'Child Node2',
+          value: 'table-2',
+          isCheck:false,
+          isLook:false,
+          isShow:true,
+        },
+      ],
+    },
+    {
+        title: 'Node3',
+        value: 'echarts',
+        isCheck:false,
+        isLook:false,
+        isShow:true,
+    },
+    {
+        title: 'Node4',
+        value: 'cass',
+        isCheck:false,
+        isLook:false,
+        isShow:true,
+    },
+  ];
+
+  const a =  [
+    {
+      title: 'Node1',
+      value: 'Tree',
+      isCheck:false,
+      isLook:false,
+      isShow:true,
+      children: [
+        {
+          title: 'Child Node1',
+          value: 'Tree-1',
+          isCheck:false,
+          isLook:false,
+          isShow:true,
+        },
+        {
+          title: 'Child Node2',
+          value: 'Tree-2',
+          isCheck:false,
+          isLook:false,
+          isShow:true,
+          children: [
+            {
+              title: 'Child Node1',
+              value: 'Tree-2-1',
+              isCheck:false,
+              isLook:false,
+              isShow:true,
+              children: [
+                {
+                  title: 'Child Node1',
+                  value: 'Tree-2-1-1',
+                  isCheck:false,
+                  isLook:true,
+                  isShow:true,
+                },
+                {
+                  title: 'Child Node2',
+                  value: 'Tree-2-1-2',
+                  isCheck:false,
+                  isLook:false,
+                  isShow:true,
+                },
+              ],
+            },
+            {
+              title: 'Child Node2',
+              value: 'Tree-2-2',
+              isCheck:false,
+              isLook:false,
+              isShow:true,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Node2',
+      value: 'table',
+      isCheck:false,
+      isLook:false,
+      isShow:true,
+      children: [
+        {
+          title: 'Child Node1',
+          value: 'table-1',
+          isCheck:false,
+          isLook:false,
+          isShow:true,
+        },
+        {
+          title: 'Child Node2',
+          value: 'table-2',
+          isCheck:false,
+          isLook:false,
+          isShow:true,
+        },
+      ],
+    },
+    {
+        title: 'Node3',
+        value: 'echarts',
+        isCheck:true,
+        isLook:false,
+        isShow:true,
+    },
+  ];
+
+console.log(treeData.concat(a));
+
+
+// 从一个多维数据组删除一个指定key的值
+/* const loop = (data) => {
+    data.forEach((item, index) => {
+        const { children } = item;
+        if(children&&children.length>0){
+            traverseTree(children);
+        }
+       children && children.length > 0 ? (item.children = loop(item.children)) : null;
+    })
+    return data
+}
+
+const  traverseTree = (data) => {
+    data.forEach((item, index) => {
+        const { children } = item;
+        if (!item.isCheck&&(!item.isLook)) {
+            console.log(item)
+            data.splice(index, 1)
+        }
+        children && children.length > 0 ? (item.children = traverseTree(children)) : null;
+    });
+    return data;
+}; */
+
+
+ // 递归-树形数组所有父级节点的id
+/* const  familyTree = (arr)=> {
+      var temp = [];
+      var forFn = function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var item = list[i];
+          const {children} = list[i];
+          if (item.children) {
+              for(var j = 0;j<children.length;j++){
+                if(!children[j].isLook&&!children[j].isCheck){
+                     children.splice(j,1);
+                     console.log(children)
+                     temp.push(item);
+                 }
+              }
+              forFn(item.children);
+          }
+        }
+      };
+      forFn(arr);
+      return temp;
+}
+
+console.log(familyTree(a)); */
+
+
+
+
+/* const filterMenu = (menuList) => {
+    return menuList.filter(item => {
+        return (item.isCheck||item.isLook)
+    }).map(item => {
+        item = Object.assign({}, item)
+        if (item.children) {
+            item.children = filterMenu(item.children)
+        }
+        return item
+    })
+}
+
+
+// 过滤后的菜单
+const myMenu = filterMenu(a);
+console.log(myMenu) */
+
+
+const b = [
+    {
+        title: 'Node1',
+        value: 'Tree',
+        isShow: false,
+        children: [
+            {
+                title: 'Child Node1',
+                value: 'Tree-1',
+                isShow: false,
+            },
+            {
+                title: 'Child Node2',
+                value: 'Tree-2',
+                isShow: false,
+                children: [
+                    {
+                        title: 'Child Node1',
+                        value: 'Tree-2-1',
+                        isShow: false,
+                        children: [
+                            {
+                                title: 'Child Node1',
+                                value: 'Tree-2-1-1',
+                                isShow: true,
+                            },
+                            {
+                                title: 'Child Node2',
+                                value: 'Tree-2-1-2',
+                                isShow: false,
+                            },
+                        ],
+                    },
+                    {
+                        title: 'Child Node2',
+                        value: 'Tree-2-2',
+                        isShow: false,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        title: 'Node2',
+        value: 'table',
+        isShow: true,
+        children: [
+            {
+                title: 'Child Node1',
+                value: 'table-1',
+                isShow: true,
+            },
+            {
+                title: 'Child Node2',
+                value: 'table-2',
+                isShow: false,
+            },
+        ],
+    },
+    {
+        title: 'Node3',
+        value: 'echarts',
+        isShow: true,
+    },
+];
+
+function deal(arr) {
+    arr.forEach((e, index) => {
+        if (e.children) {
+            deal(e.children)
+        } else {
+            if (!e.isShow) {
+                arr.splice(index, 1)//没有子集且isShow为false,就给他删了
+            }
+        }
+    });
+
+}
+//把所有剩下来得全部改成true
+function change(arr){
+    arr.forEach(e=>{
+        e.isShow=true;
+        if(e.children){
+            change(e.children)
+        }
+    })
+}
+deal(b)
+change(b)
+console.log(b)
+</script>
+</html>

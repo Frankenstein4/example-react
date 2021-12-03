@@ -9,11 +9,18 @@ export default {
   dev: {
     '/devApi': {
       //target: 'https://preview.pro.ant.design',
-      target:'http://172.31.0.3:21081',
+      target:'https://frankenstein4.github.io/00000000001/menu.json',
       changeOrigin: true,
       pathRewrite: {
         '^/devApi': '',
       },
+    },
+    '/api': {
+        target:'http://172.31.0.3:21081/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^': '',
+        },
     },
   },
   test: {

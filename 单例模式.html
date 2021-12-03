@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式弹框</title>
+</head>
+<style>
+    #modal {
+        height: 200px;
+        width: 200px;
+        line-height: 200px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<body>
+	<button id='open'>打开弹框</button>
+	<button id='close'>关闭弹框</button>
+</body>
+<script>
+    // 定义Storage
+    /* class Storage {
+         static getInstance() {
+            // 判断是否已经new过1个实例
+            if (!Storage.instance) {
+                // 若这个唯一的实例不存在，那么先创建它
+                Storage.instance = new Storage()
+            }
+            // 如果这个唯一的实例已经存在，则直接返回
+            return Storage.instance
+        }    
+        getItem (key) {
+            return localStorage.getItem(key)
+        }
+        setItem (key, value) {
+            return localStorage.setItem(key, value)
+        }
+    } 
+    
+    
+    const storage1 = Storage.getInstance()
+    const storage2 = Storage.getInstance()
+    
+    storage1.setItem('name', '李雷')
+    // 李雷
+    storage1.getItem('name')
+    // 也是李雷
+    storage2.getItem('name')
+    
+    // 返回true
+    console.log(storage1 === storage2,storage1);
+    
+    
+    */
+
+
+    class Storage {
+        constructor() {
+            if (!Storage.instance) {
+                // 若这个唯一的实例不存在，那么先创建它
+                Storage.instance = this;
+            }
+            // 如果这个唯一的实例已经存在，则直接返回
+            return Storage.instance
+        }
+        getItem(key) {
+            return localStorage.getItem(key)
+        }
+        setItem(key, value) {
+            return localStorage.setItem(key, value)
+        }
+    }
+
+    const aa = new Storage();
+    const bb = new Storage();
+    aa.setItem('aa', 1);
+    console.log(bb.getItem('aa'));
+    console.log(aa === bb, aa)
+</script>
+<script>
+
+
+    class Modal {
+        constructor () {
+        if (!Modal.instance) { // 创建模块框 并且 添加到页面中
+        const div = document.createElement('div')
+        div.id = 'modal'
+        div.style = 'display: none'
+        div.textContent="出现"
+        document.body.appendChild(div)
+         this.modal = div
+         Modal.instance = this
+        }
+        return Modal.instance
+    }
+    show () {
+        this.modal.style.display = 'block'
+    }
+    hide () {
+        this.modal.style.display = 'none'
+     }
+    
+    }
+    document.getElementById('open').addEventListener('click', function() {
+        const modal = new Modal()
+         modal.show()
+    })
+    document.getElementById('close').addEventListener('click', function() {
+        const modal = new Modal()
+        modal.hide()
+     })
+    
+
+</script>
+<!-- <script>
+    const Modal = function () { 
+        const _modal = document.createElement('div');
+        _modal.innerHTML = '我是登录弹窗';
+        _modal.setAttribute('id', 'modal');
+        _modal.style.display = 'none';
+        document.body.appendChild(_modal); 
+        return _modal 
+} 
+
+const getSingleton = function (fn) { 
+    let _single; 
+    return function() { 
+        if (!_single) { 
+            console.log(this,arguments);
+            _single = fn.apply(this, arguments); 
+    } 
+    return _single 
+    } 
+} 
+
+
+const createSingleModal = getSingleton(Modal); 
+
+document.getElementById('open').addEventListener('click', function() {
+    const modal = createSingleModal();
+     modal.style.display = 'block';
+})
+</script> -->
+<!-- <script>
+    // 核心逻辑，这里采用了闭包思路来实现单例模式
+    const Modal = (function() {
+    	let modal = null
+    	return function() {
+            if(!modal) {
+            	modal = document.createElement('div')
+            	modal.innerHTML = '我是一个全局唯一的Modal'
+            	modal.id = 'modal'
+            	modal.style.display = 'none'
+            	document.body.appendChild(modal)
+            }
+            return modal
+    	}
+    })()
+    
+    // 点击打开按钮展示模态框
+    document.getElementById('open').addEventListener('click', function() {
+        // 未点击则不创建modal实例，避免不必要的内存占用;此处不用 new Modal 的形式调用也可以，和 Storage 同理
+    	const modal = new Modal()
+    	modal.style.display = 'block'
+    })
+    
+    // 点击关闭按钮隐藏模态框
+    document.getElementById('close').addEventListener('click', function() {
+    	const modal = new Modal()
+    	if(modal) {
+    	    modal.style.display = 'none'
+    	}
+    })
+</script> -->
+
+</html>

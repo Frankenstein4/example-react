@@ -12,7 +12,7 @@ const AppTwo = React.lazy(() => import('../Comp5/index'))
 //const Home = React.lazy(() => import(/* webpackPrefetch: true */ 'views/Home'));
 
 const resource = fetchProfileData();
-
+const line = '--line-index'
 class App extends React.Component{
 
     constructor(props){
@@ -36,6 +36,13 @@ class App extends React.Component{
         /*  ...  */
     }
 
+    arrayRender(){
+        var res = [];
+        for(var i of new Array(6).keys()){
+                res.push( <li key={i} style={{'--length': i}}></li>)
+          }
+        return res
+    }
 
     render(){
         return(
@@ -48,6 +55,9 @@ class App extends React.Component{
                     
                 </Suspense>
 
+                <ul className="strip-loading">
+                    {this.arrayRender()}
+                </ul>
             </div>
         )
     }

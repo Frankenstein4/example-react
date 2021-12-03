@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+        var arr = [
+        {
+            "id": 14,
+            "upstreamGroupId": 5,
+            "name": "vv",
+            "reloadStatus": 1,
+            "openfalconId": 70
+        },
+        {
+            "id": 18,
+            "upstreamGroupId": 5,
+            "name": "ss",
+            "reloadStatus": 1,
+            "openfalconId": 74
+        },
+        {
+            "id": 5,
+            "upstreamGroupId": 1,
+            "name": "华东",
+            "reloadStatus": 1,
+            "openfalconId": 61
+        },
+        {
+            "id": 12,
+            "upstreamGroupId": 5,
+            "name": "上海",
+            "reloadStatus": 1,
+            "openfalconId": 68
+        },
+        {
+            "id": 13,
+            "upstreamGroupId": 5,
+            "name": "浙江",
+            "reloadStatus": 1,
+            "openfalconId": 69
+        },
+        {
+            "id": 21,
+            "upstreamGroupId": 13,
+            "name": "23435",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 24,
+            "upstreamGroupId": 1,
+            "name": "华西",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 25,
+            "upstreamGroupId": 24,
+            "name": "华西1",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        },
+        {
+            "id": 26,
+            "upstreamGroupId": 24,
+            "name": "华西2",
+            "reloadStatus": 1,
+            "openfalconId": 88
+        }
+    ];
+    
+      //对数据进行处理
+  function handleAreaData(areas){
+    let arrList = [];
+    const areaListArr = areas.map((item) => {
+      //处理成Tree组件可以使用的数据，
+      return {
+        key: item.id,
+        children: [],
+        title: item.name,
+        relyOn: item.upstreamGroupId,
+      };
+    });
+    //获取地址每个id，根据独有的id依赖关系，从里到外进行添加
+    // arrList = Array.from(new Set(areaListArr))
+    addArrs(areaListArr);
+  };
+  function addArrs(areaListArr) {
+    //树结构数据
+    let treeData = [];
+    //树结构分组
+    let treesArr = [];
+    const relyOnArr = Array.from(
+      new Set(
+        areaListArr.map((item) => {
+          return item.relyOn;
+        }),
+      ),
+    );
+    //将同一个地址的子数据添加到同一个数组，
+    relyOnArr.forEach((item) => {
+      let relysArr = [];
+      areaListArr.map((itemArea) => {
+        if (itemArea.relyOn == item) {
+          relysArr.push(itemArea);
+        }
+      });
+      treesArr.push(relysArr);
+    });
+    //复制一份数据长度
+    const ArrLength = treesArr.length;
+    for (let i = 0; i < ArrLength - 1; i++) {
+      //从后往前进行删除，
+      let delArea = treesArr.pop();
+      //将删除的数据传入比对函数，并给函数中匹配的项添加children
+      addArea(delArea);
+    }
+    function addArea(dela) {
+      for (let l = 0; l < treesArr.length; l++) {
+        if (treesArr[l].length > 0) {
+          treesArr[l].find((item) => {
+            //将子数据添加到父数据
+            if (dela[0].relyOn == item.key) {
+              item.children.push(...dela);
+            }
+          });
+        }
+      }
+    }
+      //treesArr[0][0].title = '默认区域';
+      //return treesArr[0];
+      console.log(treesArr)
+  }
+
+  const queue = [...arr];
+  var arr2 = queue.sort((o1, o2) => { return o1.id - o2.id });  // 浅拷贝一份，不然在做队列操作时会影响原数据
+ handleAreaData(arr2);
+</script>
+</html>

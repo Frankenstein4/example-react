@@ -7,7 +7,7 @@
  import React, { useEffect,useState } from 'react';
  import { Link, useIntl, connect, history } from 'umi';
  import { GithubOutlined } from '@ant-design/icons';
- import { Result, Button,Select } from 'antd';
+ import { Result, Button } from 'antd';
  import Authorized from '@/utils/Authorized';
  import RightContent from '@/components/GlobalHeader/RightContent';
  import { getAuthorityFromRouter } from '@/utils/utils';
@@ -37,32 +37,6 @@
       </span>
     );
 };
-
-const { Option } = Select;
-const HeaderContentRender = (...props) => {
-  const [propConifg] = [...props]
-   //console.warn("222", propConifg)
-  const { route: { routes = [] }, setCurMenuGroupID, curMenuGroupID,menuData } = propConifg;
-  //let routes = route.routes || []
-  //console.log(curMenuGroupID,routes)
-  function handleSelectChange(value) {
-    setCurMenuGroupID(value);
-    sessionStorage.setItem('menuId',value);
-    //console.log(curMenuGroupID)
-  }
-  return (
-    <Select  style={{width: '300px'}} onChange={handleSelectChange}  defaultValue={curMenuGroupID}
-    showSearch
-    allowClear
-    filterOption={(input, option) =>
-        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-    }
-    >
-        <Option value={'/'}>全部</Option>
-       {propConifg.menuData?.length&&(propConifg.menuData.map(item => (<Option value={item.path} key={item.path}>{item.name?item.name:'全部'}</Option>)))}
-    </Select>
-  )
-}
  
  const  fixMenuItemIcon = (menus) => {
    menus.forEach((item) => {
@@ -92,47 +66,14 @@ const HeaderContentRender = (...props) => {
  /**
   * use Authorized check all menu item
   */
- /*  const menuDataRender = (menuList, curMenuGroupID) => {
-    return menuList.filter((item, index) => {
-        console.log(item)
-      if(curMenuGroupID){
-         switch (curMenuGroupID) {
-             case curMenuGroupID:
-               return item.path.indexOf(curMenuGroupID)!=-1
-             default:
-               return true;
-           }
-      }
-      return item
-    }).map((item) => {
-      const localItem = {
-        ...item,
-        icon:<MyIcon path={typeof item.icon === 'string' ? item.icon : ''} />,
-        children: item.children ? menuDataRender(item.children, curMenuGroupID) : undefined,
-      };
-      return Authorized.check(item.authority, localItem, null);
-    });
-  } */
-
-
   const menuDataRender = menuList =>
   menuList.map(item => {
     const localItem = {
       ...item,
-      icon:item.icon?<MyIcon path={typeof item.icon === 'string' ? item.icon : ''} />:'',
       children: item.children ? menuDataRender(item.children) : undefined,
     };
     return Authorized.check(item.authority, localItem, null);
   });
-
-  const getMenulistData = (menuList, curMenuGroupID) => {
-      if(curMenuGroupID){
-          let menu = menuList.filter((item,index)=>item.path.indexOf(curMenuGroupID)!=-1);
-          console.log(menu,'===========menu')
-          return menuDataRender(menu)
-      }
-      return menuDataRender(menuList)
-  }
  
  const defaultFooterDom = (
    <DefaultFooter
@@ -178,10 +119,6 @@ const HeaderContentRender = (...props) => {
    /**
     * constructor
     */
-
-
-    const [curMenuGroupID, setCurMenuGroupID] = useState(sessionStorage.getItem('menuId')?sessionStorage.getItem('menuId'):'');
-    const routes = props.route.routes;
  
    useEffect(() => {
      if (dispatch) {
@@ -269,10 +206,9 @@ const HeaderContentRender = (...props) => {
            }}
            footerRender={() => defaultFooterDom}
            /* menuDataRender={menuDataRender} */   /* 这种是静态路由 */
-           menuDataRender={ () => getMenulistData(menuData, curMenuGroupID)}  
+           menuDataRender={ () => fixMenuItemIcon(menuData) }  
            /* menuDataRender={ () => menuData }   */
            rightContentRender={() => <RightContent />}
-           headerContentRender={() => <HeaderContentRender {...props} curMenuGroupID={curMenuGroupID} setCurMenuGroupID={setCurMenuGroupID}/>}
            {...props}
            {...settings}
          >

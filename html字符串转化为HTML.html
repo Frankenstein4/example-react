@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>渲染html字符串</title>
+  <style>
+    .render-html{
+      border: 1px solid #BBBFCD;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>原始字符串</h1>
+    <div id="pre" class="render-html"></div>
+    <h1>转义 &lt; 和 &gt; 为 html 实体后</h1>
+    <div id="next" class="render-html"></div>
+  </div>
+  <div>
+      <input type="text" pattern="^([1-9]|[1-9]\d|1\d{2}|2[0-1]\d|22[0-3])((\.(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])){3})$"  required validationMessage="ip格式错误" >
+      <input type="text" name="country_code" pattern="[A-Za-z]{3}" title="Three letter country code">
+      <input type="submit">
+  </div>
+  <script>
+    var str = `<div class="article">
+        <div class="flag flag-left">推荐真美丽</div>
+        <div class="d">
+            <div class="d1">
+                <div>${23}</div>
+            </div>
+            <div class="d1">
+                <div>最大</div>
+                <div>最小</div>
+            </div>
+        </div>
+    </div>`
+    // 将 <、> 转义成 html 实体
+    function htmlSelfEncode (str) {
+      if (typeof str !== 'string') {
+        return ''
+      }
+      let s = ''
+      if (str.length === 0) {
+        return s
+      }
+      s = str.replace(/</g, '&lt;')
+      s = s.replace(/>/g, '&gt;')
+      return s
+    }
+    // 渲染 html 字符串
+    function renderHtml (str) {
+      if (typeof str !== 'string') {
+	      return ''
+	    }
+	    const regPre = /<\/?[a-zA-Z]+[1-9]?\s*(\s+[a-zA-Z]+=("[^</>]*"|'[^</>]*'|[^</>]*))*\/?>/g
+	    const arrPre = str.match(regPre) || []
+	    let resultArr = []
+	    arrPre.forEach((v, i) => {
+	      let index = str.indexOf(v)
+	      let temp = str.substring(0, index)
+	      resultArr.push(this.htmlSelfEncode(temp), v)
+	      str = str.substring(index + v.length)
+	    })
+	    resultArr = resultArr.filter(v => v)
+	    return resultArr.join('')
+    }
+    const pre = document.querySelector('#pre')
+    const next = document.querySelector('#next')
+    pre.innerHTML = str
+    next.innerHTML = renderHtml(str)
+    console.log(str)
+    console.log(renderHtml(str))
+  </script>
+</body>
+</html>

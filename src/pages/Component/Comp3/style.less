@@ -4,3 +4,35 @@
         color: lawngreen;
     }
 }
+
+.strip-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    li {
+        @lineIndex:4;
+        @diff : 30px;
+        width : calc(~"100% - @{diff}");
+        @w: calc((@lineIndex - 1)*200ms);
+        --time : calc((var(--length)-1)*200ms);
+        border-radius: 3px;
+        width: 6px;
+        height: 30px;
+        background-color: #f66;
+        animation: beat 1.5s ease-in-out var(--time) infinite;
+        & + li {
+            margin-left: 5px;
+        }
+    }
+}
+@keyframes beat {
+    0%,
+    100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(.5);
+    }
+}

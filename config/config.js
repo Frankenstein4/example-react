@@ -2,7 +2,6 @@
 import { defineConfig } from 'umi';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
-
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
   history: {
@@ -64,6 +63,8 @@ export default defineConfig({
               name: 'welcome管理员',
               icon: 'smile',
               component: './Welcome',
+              hideInMenu: true,
+              //authority: ['111'],
             },
             {
               path: '/user-list',
@@ -77,16 +78,30 @@ export default defineConfig({
               icon: 'smile',
               routes:[
                 {
-                  path: './echarts1',
+                  path: 'echarts1',
                   name: '入门柱状图',
                   icon: 'smile',
                   component: './Echarts/Echarts1/index',
+                  routes:[
+                    {
+                        path: 'echarts22',
+                        name: '天气折线图',
+                        icon: 'icon-jiankong',
+                        component: './Echarts/Echarts2/index',
+                    },
+                  ]
                 },
                 {
                   path: './echarts2',
                   name: '天气折线图',
                   icon: 'smile',
                   component: './Echarts/Echarts2/index',
+                },
+                {
+                    path: './echarts22',
+                    name: '天气折线图',
+                    icon: 'smile',
+                    component: './Echarts/Echarts2/index',
                 },
                 {
                   path: './echarts3',
@@ -222,6 +237,7 @@ export default defineConfig({
               path: '/Tree',
               name: '树',
               icon: 'smile',
+              //authority: ['llll'],
               routes: [
                 {
                   path: './Tree1',
@@ -270,7 +286,31 @@ export default defineConfig({
                     name: '可拖拽组件',
                     icon: 'smile',
                     component: './Tree/Tree9',
-                  },
+                },
+                {
+                    path: './Tree10',
+                    name: '改造树组件',
+                    icon: 'smile',
+                    component: './Tree/Tree10',
+                },
+                {
+                    path: './Tree11',
+                    name: '下拉框分页,搜索',
+                    icon: 'smile',
+                    component: './Tree/Tree11',
+                },
+                {
+                    path: './Tree12',
+                    name: '手写树控件',
+                    icon: 'smile',
+                    component: './Tree/Tree12',
+                },
+                {
+                    path: './Tree13',
+                    name: '左侧树组件demo',
+                    icon: 'smile',
+                    component: './Tree/Tree13',
+                },
               ]
             },
             {
@@ -313,7 +353,7 @@ export default defineConfig({
                   name: '可编辑行（高级表格）',
                   icon: 'smile',
                   component: './Step/Step6',
-                }
+                },
               ]
             },
             {
@@ -393,6 +433,12 @@ export default defineConfig({
                     icon: 'smile',
                     component: './Component/Comp20',
                   },
+                  {
+                    path: './Comp21',
+                    name: 'HOC',
+                    icon: 'smile',
+                    component: './Component/Comp21',
+                  },
                 ]
               },
               {
@@ -452,6 +498,7 @@ export default defineConfig({
               name: 'list.table-list333',
               icon: 'table',
               path: '/list',
+              authority: [111],
               component: './ListTableList',
             },
             {
@@ -475,9 +522,9 @@ export default defineConfig({
     'font-size-base': '14px',
     'badge-font-size': '12px',
     'btn-font-size-lg': '@font-size-base',
-    'menu-dark-bg': '#43497D',
-    'menu-dark-submenu-bg': '#5760A1',
-    'layout-sider-background': '#5760A1',
+    'menu-dark-bg': '#2F4F4F',
+    'menu-dark-submenu-bg': '#2F4F4F',
+    'layout-sider-background': '#2F4F4F',
   },
   // @ts-ignore
   title: false,

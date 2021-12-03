@@ -7,6 +7,7 @@ const MenuModel = {
     effects: {
         *getMenuData(_, { call, put }) {
             const response = yield call(getMenuData);
+            sessionStorage.getItem('menu')?'':sessionStorage.setItem('menu',JSON.stringify(response));
             yield put({
               type: 'save',
               payload: response,

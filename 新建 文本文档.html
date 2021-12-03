@@ -1,0 +1,108 @@
+<script>
+  let a = [
+    {
+      title: "Node1",
+      value: "Tree",
+      isShow: false,
+      children: [
+        {
+          title: "Child Node1",
+          value: "Tree-1",
+          isShow: false,
+        },
+        {
+          title: "Child Node2",
+          value: "Tree-2s",
+          isShow: false,
+          children: [
+            {
+              title: "Child Node1",
+              value: "Tree-2-1",
+              isShow: false,
+              children: [
+                {
+                  title: "Child Node1",
+                  value: "Tree-2-1-1",
+                  isShow: true,
+                },
+                {
+                  title: "Child Node2",
+                  value: "Tree-2-1-2",
+                  isShow: false,
+                },
+              ],
+            },
+            {
+              title: "Child Node2",
+              value: "Tree-2-2",
+              isShow: false,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Node2",
+      value: "table",
+      isShow: true,
+      children: [
+        {
+          title: "Child Node1",
+          value: "table-1",
+          isShow: true,
+        },
+        {
+          title: "Child Node2",
+          value: "table-2",
+          isShow: false,
+        },
+      ],
+    },
+    {
+      title: "Node3",
+      value: "echarts",
+      isShow: false,
+    },
+  ];
+  let i = 0;//记录最后需要运行的次数
+  function deal(arr) {
+    i++;
+    arr.forEach((e, index) => {
+      if (e.children) {
+        deal(e.children);
+      } else {
+        if (!e.isShow) {
+          e.Del = true;
+        }
+      }
+    });
+    del(arr);
+  }
+//   删除被标记的项
+  function del(arr) {
+    for ( k = 0; k < arr.length + 1; k++) {
+      if (arr[k] && arr[k].Del) {
+        arr.splice(k, 1);
+        k=0
+      }
+    }
+  }
+  //把所有剩下来得全部改成true
+  function change(arr) {
+    arr.forEach((e) => {
+      // debugger
+      e.isShow = true;
+      if (e.children) {
+        change(e.children);
+      }
+    });
+  }
+  deal(a);
+ const t= JSON.parse(JSON.stringify(i))
+  //   console.log(a);
+  for (let j = 0; j < t; j++) {
+    deal(a);
+  }
+  change(a)
+  console.log(a);
+</script>

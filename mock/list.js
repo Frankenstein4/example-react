@@ -1,24 +1,13 @@
-const getNotices = (req, res) => {
-  res.json([
-   /*  {
+[
+    {
       path: '/',
       redirect: '/welcome',
-      //redirect: '/welcome/wel', //不能这样写  在BasicLayout文件里面需要对路由选中做出逻辑运算
-    }, */
+    },
     {
       path: '/welcome',
       name: 'welcome管理员',
       icon: 'icon-zhanghuguanli',
       component: './Welcome',
-      key:'/welcome',
-      //hideInMenu: true,
-      children:[
-          {
-              key:'管理员',
-              name:'aaa',
-              title:'增加'
-          }
-      ]
     },
     {
       path: '/user-list',
@@ -30,38 +19,23 @@ const getNotices = (req, res) => {
       path: '/echarts',
       name: 'echarts图表',
       icon: 'icon-wangluoxingnengjiankong',
-      children: [
+      routes: [
         {
           path: 'echarts1',
           name: '入门柱状图',
+          icon: 'icon-wangluoxingnengjiankong',
           component: './Echarts/Echarts1/index',
-          children: [
-            {
-              path: 'echarts22',
-              name: '天气折线图',
-              //icon: 'icon-jiankongguanli',
-              component: './Echarts/Echarts2/index',
-            },
-          ],
         },
         {
-          path: '/echarts/echarts2',
+          path: 'echarts2',
           name: '天气折线图',
-          icon: 'icon-jiankong',
+          icon: 'smile',
           component: './Echarts/Echarts2/index',
-        },
-        {
-            path: 'echarts22',
-            name: '天气折线图',
-            icon: 'icon-jiankong',
-            component: './Echarts/Echarts2/index',
-            hideChildrenInMenu: true,
-            hideInMenu: true,
         },
         {
           path: 'echarts3',
           name: '外部拓扑图',
-          icon: 'icon-jiankong',
+          icon: 'smile',
           component: './Echarts/Echarts3/index',
         },
         {
@@ -75,18 +49,6 @@ const getNotices = (req, res) => {
           name: '甜甜圈图',
           icon: 'smile',
           component: './Echarts/Echarts5/index',
-          children:[
-            {
-                key: 50010,
-                title: '查看',
-                parentId: 'Ledger',
-            },
-            {
-                key: 50011,
-                title: '编辑',
-                parentId: 'Ledger',
-            },
-          ]
         },
         {
           path: 'echarts6',
@@ -118,7 +80,7 @@ const getNotices = (req, res) => {
       path: '/table1',
       name: '列表',
       icon: 'icon-wangluoxingnengjiankong',
-      children: [
+      routes: [
         {
           path: 'table1',
           name: '表格样式1',
@@ -203,7 +165,7 @@ const getNotices = (req, res) => {
       path: '/Tree',
       name: '树',
       icon: 'icon-wangluoxingnengjiankong',
-      children: [
+      routes: [
         {
           path: 'Tree1',
           name: '树组件',
@@ -252,39 +214,13 @@ const getNotices = (req, res) => {
           icon: 'smile',
           component: './Tree/Tree9',
         },
-        {
-            path: 'Tree10',
-            name: '改造树组件',
-            icon: 'smile',
-            component: './Tree/Tree10',
-        },
-        {
-            path: 'Tree11',
-            name: '下拉框分页,搜索',
-            icon: 'smile',
-            component: './Tree/Tree11',
-        },
-        {
-            path: 'Tree12',
-            name: '手写树控件',
-            icon: 'smile',
-            isShow:false,
-            component: './Tree/Tree12',
-        },
-        {
-            path: 'Tree13',
-            name: '左侧树组件demo',
-            icon: 'smile',
-            isShow:false,
-            component: './Tree/Tree12',
-        },
       ],
     },
     {
       path: '/Step',
       name: '示例',
       icon: 'icon-wangluoxingnengjiankong',
-      children: [
+      routes: [
         {
           path: 'Step1',
           name: '步骤条',
@@ -327,7 +263,7 @@ const getNotices = (req, res) => {
       path: '/Component',
       name: '关于组件',
       icon: 'icon-wangluoxingnengjiankong',
-      children: [
+      routes: [
         {
           path: 'Comp1',
           name: 'class组件父传子',
@@ -400,19 +336,13 @@ const getNotices = (req, res) => {
           icon: 'smile',
           component: './Component/Comp20',
         },
-        {
-            path: 'Comp21',
-            name: 'HOC',
-            icon: 'smile',
-            component: './Component/Comp21',
-        },
       ],
     },
     {
       path: '/Network',
       name: '网络请求',
       icon: 'icon-wangluoxingnengjiankong',
-      children: [
+      routes: [
         {
           path: 'Example1',
           name: 'react-query',
@@ -445,8 +375,23 @@ const getNotices = (req, res) => {
         },
       ],
     },
-  ]);
-};
-export default {
-  'GET /api/menu/getMenuData': getNotices,
-};
+    {
+      path: '/admin',
+      name: 'admin111',
+      icon: 'icon-wangluoxingnengjiankong',
+      component: './Admin',
+      authority: ['admin'],
+      routes: [
+        {
+          path: '/admin/sub-page',
+          name: 'sub-page222',
+          icon: 'smile',
+          component: './Welcome',
+          authority: ['admin'],
+        },
+      ],
+    },
+    {
+      component: './404',
+    },
+  ]

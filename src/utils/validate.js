@@ -256,4 +256,14 @@ export const isCheckIpRange = (value) => {
         return true;
     }
 };
+
+
+//n次幂求和
+export function powSum(x,n) {
+    let sum = 0 ;
+    for(let i = 0;i<n;i++){
+        sum+=Math.pow(x,i)
+    }
+    return sum
+}
   

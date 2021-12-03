@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .check-div {
+      width: 400px;
+      height: 600px;
+      margin: 100px auto;
+      border: 1px solid slategrey;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    .input-div {
+      margin-top: 100px;
+    }
+    input {
+      margin-left: 5px;
+      text-align: center;
+      width: 50px;
+      height: 50px;
+      border: none;
+      /* 这里注意修改默认外边框属性,不用border*/
+      outline: 1px solid black;
+    }
+    input:focus {
+      outline: 2px solid #3494fe;
+    }
+  </style>
+</head>
+<body>
+<div class="check-div">
+  <h1>请输入验证码</h1>
+  <div class="input-div">
+    <input
+      type="text"
+      class="inputItem0"
+      data-index="0"
+      maxlength="1"
+      autofocus
+    />
+    <input type="text" class="inputItem1" data-index="1" maxlength="1" />
+    <input type="text" class="inputItem2" data-index="2" maxlength="1" />
+    <input type="text" class="inputItem3" data-index="3" maxlength="1" />
+  </div>
+</div>
+<script>
+  var inputArr = document.getElementsByTagName("input");
+  window.addEventListener("keyup", (e) => {
+    let curIndex = e.target.getAttribute("data-index"); //获取当前输入的下标
+    //如果点击BackSpace删除 这里删除全部
+    if (e && e.keyCode == 8) {
+      console.log(22222222222);
+      for (let j = 0; j <= 3; j++) {
+        inputArr[j].value = "";
+        inputArr[0].focus();
+      }
+      return;
+    }
+    console.log("e.keyCode", e.keyCode);
+    //如果输入的不是数字
+    if (!(e.keyCode >= 48 && e.keyCode <= 57)) {
+      console.log(1111111111);
+      inputArr[curIndex].value = "";
+      return false;
+    }
+    //遍历数组的值拼接成验证码字符串
+    var str = "";
+    for (let j = 0; j <= 3; j++) {
+      console.log(inputArr[j].value);
+      str += inputArr[j].value;
+    }
+
+    var nextIndex = Number(curIndex) + 1;
+    //判断没有属够四位验证码的时候
+    if (curIndex < 3 && str.length < 4) {
+      for (let i = 0; i <= curIndex; i++) {
+        // 判断之前的是否有空即没输入的情况，存在则把焦点调整到前面，并且把输入的后面给到最前面的一位，否则跳到下一位
+        if (!inputArr[i].value) {
+          inputArr[curIndex].blur();
+          inputArr[i].value = inputArr[curIndex].value;
+          var index = i + 1;
+          inputArr[index].focus();
+          inputArr[curIndex].value = "";
+          return;
+        } else {
+          var nextIndex = Number(curIndex) + 1;
+          inputArr[nextIndex].focus();
+        }
+      }
+    } else {
+      alert("提交的验证码是" + str);
+      //输入了四位验证码的时候可以发送验证码请求等等
+    }
+  });
+</script>
+</body>
+</html>

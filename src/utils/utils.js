@@ -37,6 +37,38 @@ export const getAuthorityFromRouter = (router = [], pathname) => {
   if (authority) return authority;
   return undefined;
 };
+/* export const getAuthorityFromRouter = (router, pathname) => {
+    for (let route of router) {
+        console.log(route)
+        const {path,children} = route;
+        if(path&&pathRegexp(path).exec(pathname)){
+            console.log('===============')
+            return route;
+        }
+        if(children){
+            route = getAuthorityFromRouter(children,pathname)
+            if(route) return route
+        }
+    }
+    return {path:'ssss',authority: ['sss']}
+    let tmp = undefined ;
+    router.forEach((item,index)=>{
+        const {path,children} = item;
+        if(path&&pathRegexp(path).exec(pathname)){
+            tmp = item ;
+            return false;
+        }
+        if (children && !tmp) {
+            tmp = getAuthorityFromRouter(children, pathname);
+            if (tmp) {
+              return false;
+            }
+        }
+        return tmp
+    })
+    console.log(tmp)
+    return {path:'ssss',authority: ['sss']}
+}; */
 export const getRouteAuthority = (path, routeData) => {
   let authorities;
   routeData.forEach(route => {

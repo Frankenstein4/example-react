@@ -14,7 +14,7 @@ export default function Tree1() {
         getTreeData();
         showTimeC();
         
-        setcc(["kernel.files.allocated", "kernel.files.left", "kernel.maxfiles", "kernel.maxproc","net.if.total.bytes", "net.if.total.dropped"]);
+        setcc(["kernel.files.allocated", "kernel.files.left", "kernel.maxfiles", "kernel.maxproc","net.if.total.bytes", "net.if.total.dropped","p-333333"]);
     },[])
     var arr = [
         {

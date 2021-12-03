@@ -20,7 +20,7 @@ export default function TreeTable() {
     };
     const aa = () => {
         return <div style={{ width: '100%' }}>
-            <img src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596129248963&di=390fb20ec3728be6efcde43835a50d22&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201512%2F23%2F20151223175222_5kuj4.jpeg' style={{ width: '20px', height: '20px' }} />
+            <img src='https://gitee.com/Frankenstein4/tc/raw/master/Linux.png' style={{ width: '20px', height: '20px' }} />
         </div>
     }
     return (

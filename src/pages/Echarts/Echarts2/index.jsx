@@ -94,7 +94,9 @@ class EchartsTest1 extends Component {
 
 
 
-
+        window.addEventListener('resize',()=>{
+            myChart.resize();
+          });
 
 
 
