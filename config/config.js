@@ -498,7 +498,7 @@ export default defineConfig({
               name: 'list.table-list333',
               icon: 'table',
               path: '/list',
-              authority: [111],
+              //authority: [111],
               component: './ListTableList',
             },
             {

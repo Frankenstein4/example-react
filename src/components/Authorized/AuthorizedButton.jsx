@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert,message } from 'antd';
-import check from '@/components/Authorized/AuthorPermission';
+import check from '@/components/Authorized/CheckPermissions';
 
 const Authorized = ({
   //有权限时返回的内容

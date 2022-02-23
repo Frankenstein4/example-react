@@ -115,6 +115,73 @@
         return treeArr;
       };
       console.log(getTree(treeData, ''));
+
+      const  tree = getTree(treeData,'');
+      function getAHorizontalMenu(data,id) {
+        let arr = []
+        function getChildren(data) {
+            data.forEach((value) => {
+            if(value.id==id){
+                return 
+            }
+            if (value.children && value.children.length > 0) {
+                arr.push(value);
+                getChildren(value.children,id);
+            }
+            });
+        }
+        getChildren(data,id);
+        return arr;
+        }
+        //console.log((getAHorizontalMenu(treeData,'online')))
+
+
+
+
+
+
+
+
+
+
+
+        let a = [
+            {
+                id: "product",
+                title: "产品中心" ,
+                children:[
+                    {
+                    id: "inter",
+                    title: "网络产品",
+                    },
+                    {
+                    id: "inter",
+                    title: "网络产品",
+                    }
+                ]
+
+            }
+        ]
+
+        function findPathByLeafId(leafId, nodes, path) {
+                if (path === undefined) {
+                    path = [];
+                }
+                for (var i = 0; i < nodes.length; i++) {
+                    var tmpPath = path.concat();
+                    tmpPath.push(nodes[i].id);
+                    if (leafId == nodes[i].id) {
+                        return tmpPath;
+                    }
+                    if (nodes[i].children&&nodes[i].children.length>0) {
+                        var findResult = findPathByLeafId(leafId, nodes[i].children, tmpPath);
+                        if (findResult) {
+                            return findResult;
+                        }
+                    }
+                }
+            }
+            console.log(findPathByLeafId('online',tree))
     </script>
   </head>
 

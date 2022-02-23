@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 通过预算类型code得到预算类型名称
+ let aaa = []
+const getYslxNameBycode = (list,key)=> {
+                  if (list && list.length) {
+                    list.forEach(item => {
+                        const find = data => {
+                            if (data.code == key) {
+                                return true
+                            }
+                            aaa.push(data.code)
+                            let child = data.children;
+                            if (child) {
+                                for (let i = 0; i < child.length; i++) {
+                                    if(find(child[i])){
+                                        return true
+                                    }
+                                }
+                            }
+                        };
+                        find(item);
+                    })
+                };
+            }
+ const  list= [
+            {
+                "code": "01",
+                "entityName": "YW_YBKF_TYPE",
+                "name": "医院收入总额预算",
+                "id": "6CFFBC5474CE43BBA7F96D853F89A660",
+                "pkValue": "6CFFBC5474CE43BBA7F96D853F89A660",
+                "entityPKField": "id",
+                "children": [
+                    {
+                        "parentName": "医院收入总额预算",
+                        "code": "1001",
+                        "parentCode": "01",
+                        "children": [
+                            {
+                                "parentName": "医保总额",
+                                "code": "100101",
+                                "parentCode": "1001",
+                                "children": [],
+                                "entityName": "YW_YBKF_TYPE",
+                                "name": "城镇医保总额",
+                                "id": "70AD4C8D7D3543A4AD72C0784D3BB67B",
+                                "pkValue": "70AD4C8D7D3543A4AD72C0784D3BB67B",
+                                "entityPKField": "id"
+                            },
+                            {
+                                "parentName": "医保总额",
+                                "code": "100102",
+                                "parentCode": "1001",
+                                "children": [],
+                                "entityName": "YW_YBKF_TYPE",
+                                "name": "居民医保总额",
+                                "id": "E10A08FB3E4B453C89B7AAF1CCD40B5E",
+                                "pkValue": "E10A08FB3E4B453C89B7AAF1CCD40B5E",
+                                "entityPKField": "id"
+                            },
+                            {
+                                "parentName": "医保总额",
+                                "code": "100103",
+                                "parentCode": "1001",
+                                "children": [],
+                                "entityName": "YW_YBKF_TYPE",
+                                "name": "职工医保总额",
+                                "id": "67931C28096145E682E860CECB9556C1",
+                                "pkValue": "67931C28096145E682E860CECB9556C1",
+                                "entityPKField": "id"
+                            }
+                        ],
+                        "entityName": "YW_YBKF_TYPE",
+                        "name": "医保总额",
+                        "id": "9303B2DB6DA84EFCB4093FD77CE18084",
+                        "pkValue": "9303B2DB6DA84EFCB4093FD77CE18084",
+                        "entityPKField": "id"
+                    },
+                    {
+                        "parentName": "医院收入总额预算",
+                        "code": "1002",
+                        "parentCode": "01",
+                        "children": [],
+                        "entityName": "YW_YBKF_TYPE",
+                        "name": "住院收入总额",
+                        "id": "0C80D6FB7B2F40D1A16729D5112FCE11",
+                        "pkValue": "0C80D6FB7B2F40D1A16729D5112FCE11",
+                        "entityPKField": "id"
+                    },
+                    {
+                        "parentName": "医院收入总额预算",
+                        "code": "1003",
+                        "parentCode": "01",
+                        "children": [],
+                        "entityName": "YW_YBKF_TYPE",
+                        "name": "门诊收入总额",
+                        "id": "D1CC5143C04046C1B63F224FC19FF53F",
+                        "pkValue": "D1CC5143C04046C1B63F224FC19FF53F",
+                        "entityPKField": "id"
+                    }
+                ]
+            }
+        ]
+   
+   //getYslxNameBycode(list,'100103')
+   //console.log(aaa)
+   function fn(n){
+    if(n<1){
+        console.log("拆解问题完毕，开始分而治之")
+        return 1
+    }
+    console.log("f("+n+")="+n+" * f("+(n-1)+")")
+    let z = n*fn(n-1)
+    console.log("f("+n+")="+z);
+    return z
+}
+fn(5)
+
+ //const result = data?.list?.num ?? 16
+ let arr = null;
+ let obj = {
+     id:2,
+     key:""
+ }
+ let str= ''
+ let a =  (arr?.length && arr.map(item => item) )?? [];
+ let b = arr?.length && (arr.map(item => item)) || [];
+ let c = obj?.key;
+ let d = str?.split(',');
+ let e = arr?.map(item => item)||[]
+ console.log(a,b,c)
+ console.log(d,e)
+</script>
+</html>

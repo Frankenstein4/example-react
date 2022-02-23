@@ -138,7 +138,7 @@
                   title: 'Child Node1',
                   value: 'Tree-2-1-1',
                   isCheck:false,
-                  isLook:true,
+                  isLook:'true',
                   isShow:true,
                 },
                 {
@@ -193,7 +193,7 @@
     },
   ];
 
-console.log(treeData.concat(a));
+console.log(a.concat(treeData));
 
 
 // 从一个多维数据组删除一个指定key的值
@@ -267,73 +267,73 @@ const myMenu = filterMenu(a);
 console.log(myMenu) */
 
 
-const b = [
-    {
-        title: 'Node1',
-        value: 'Tree',
-        isShow: false,
-        children: [
-            {
-                title: 'Child Node1',
-                value: 'Tree-1',
-                isShow: false,
-            },
-            {
-                title: 'Child Node2',
-                value: 'Tree-2',
-                isShow: false,
-                children: [
-                    {
-                        title: 'Child Node1',
-                        value: 'Tree-2-1',
-                        isShow: false,
-                        children: [
-                            {
-                                title: 'Child Node1',
-                                value: 'Tree-2-1-1',
-                                isShow: true,
-                            },
-                            {
-                                title: 'Child Node2',
-                                value: 'Tree-2-1-2',
-                                isShow: false,
-                            },
-                        ],
-                    },
-                    {
-                        title: 'Child Node2',
-                        value: 'Tree-2-2',
-                        isShow: false,
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        title: 'Node2',
-        value: 'table',
-        isShow: true,
-        children: [
-            {
-                title: 'Child Node1',
-                value: 'table-1',
-                isShow: true,
-            },
-            {
-                title: 'Child Node2',
-                value: 'table-2',
-                isShow: false,
-            },
-        ],
-    },
-    {
-        title: 'Node3',
-        value: 'echarts',
-        isShow: true,
-    },
-];
+    const b = [
+        {
+            title: 'Node1',
+            value: 'Tree',
+            isShow: false,
+            children: [
+                {
+                    title: 'Child Node1',
+                    value: 'Tree-1',
+                    isShow: false,
+                },
+                {
+                    title: 'Child Node2',
+                    value: 'Tree-2',
+                    isShow: false,
+                    children: [
+                        {
+                            title: 'Child Node1',
+                            value: 'Tree-2-1',
+                            isShow: false,
+                            children: [
+                                {
+                                    title: 'Child Node1',
+                                    value: 'Tree-2-1-1',
+                                    isShow: true,
+                                },
+                                {
+                                    title: 'Child Node2',
+                                    value: 'Tree-2-1-2',
+                                    isShow: false,
+                                },
+                            ],
+                        },
+                        {
+                            title: 'Child Node2',
+                            value: 'Tree-2-2',
+                            isShow: false,
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            title: 'Node2',
+            value: 'table',
+            isShow: true,
+            children: [
+                {
+                    title: 'Child Node1',
+                    value: 'table-1',
+                    isShow: true,
+                },
+                {
+                    title: 'Child Node2',
+                    value: 'table-2',
+                    isShow: false,
+                },
+            ],
+        },
+        {
+            title: 'Node3',
+            value: 'echarts',
+            isShow: true,
+        },
+    ];
 
-function deal(arr) {
+/* function deal(arr) {
     arr.forEach((e, index) => {
         if (e.children) {
             deal(e.children)
@@ -356,6 +356,51 @@ function change(arr){
 }
 deal(b)
 change(b)
-console.log(b)
+console.log(b) */
+
+
+function getAHorizontalMenu(data) {
+    let arr = []
+    function getChildren(data) {
+      data.forEach((value) => {
+        arr.push(value);
+        if(value.isShow){
+            return 
+        }
+        if (value.children && value.children.length > 0) {
+          getChildren(value.children);
+        }
+      });
+    }
+    getChildren(data);
+    return arr;
+  }
+//console.log((getAHorizontalMenu(b)))
+
+    function findPathByLeafId(nodes, path) {
+        if (path === undefined) {
+            path = [];
+        }
+        for (var i = 0; i < nodes.length; i++) {
+            var tmpPath = path.concat();
+            tmpPath.push(nodes[i]);
+            if (nodes[i].isShow) {
+                return tmpPath;
+            }
+            if (nodes[i].children && nodes[i].children.length > 0) {
+                var findResult = findPathByLeafId(nodes[i].children, tmpPath);
+                console.log(findResult)
+                if (findResult) {
+                    return findResult;
+                }
+            }
+        }
+    }
+    console.log(findPathByLeafId(b))
+
+
+
+
+    
 </script>
 </html>
